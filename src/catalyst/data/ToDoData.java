@@ -8,6 +8,6 @@ public interface ToDoData {
 	
 	ArrayList<ToDoItem> getToDoList();
 	
-	void addToToDoList(String ToDo);
-	void removeFromToDoList(String ToDo);
+	void addToToDoList(ToDoItem item);
+	void removeFromToDoList(ToDoItem item);
 }
