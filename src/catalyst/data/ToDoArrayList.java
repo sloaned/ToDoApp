@@ -1,11 +1,16 @@
 package catalyst.data;
 
-public class ToDoArrayList implements ToDoData{
+import java.util.ArrayList;
 
+import catalyst.application.ToDoItem;
+
+public class ToDoArrayList implements ToDoData{
+	
+	ArrayList<ToDoItem> toDoList = new ArrayList<ToDoItem>();
 	@Override
 	public ArrayList<ToDoItem> getToDoList() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return toDoList;
 	}
 
 	@Override
