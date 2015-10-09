@@ -290,12 +290,40 @@ public class ToDoApp
 	    Date date = new Date();
 		for(ToDoItem idx : theList)
 		{
+
 			date = idx.getDueDate();
 			dateString = sdf.format(date);
 			
 			System.out.println(counter + ")  " + idx.getTask() + " " + dateString 
 				+ " " + idx.getAssignedUser() + " " + idx.isComplete() + " " 
 				+ idx.isInProgress() + ".");
+
+			String isInProgress = null;
+			boolean inProgress = idx.isInProgress();
+			if(inProgress == true)
+			{
+				isInProgress = "Yes";
+				
+			}
+			else if(inProgress == false)
+			{
+				isInProgress = "No";
+			}
+			
+			System.out.println(counter + ")  "  + idx.getAssignedUser() + " needs to " + idx.getTask() + " and finish it by: " + idx.getDueDate() + "."); 
+			System.out.println( "\tIn progress? " + isInProgress);
+			
+			boolean complete = idx.isComplete();
+			String isCompleted = null;
+			if(complete == false)
+			{
+				break;
+			}
+			else if(complete == true)
+			{
+				System.out.println("\tThis task is finished!");
+			}
+			
 			counter++;
 		}
 	}
