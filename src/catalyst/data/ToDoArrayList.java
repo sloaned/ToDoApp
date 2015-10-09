@@ -8,41 +8,53 @@ public class ToDoArrayList implements ToDoData{
 	
 	ArrayList<ToDoItem> toDoList = new ArrayList<ToDoItem>();
 	@Override
-	/**
-	 * returns the entire to-do list
-	 * @return ArrayList<ToDoItem>
-	 */
 	public ArrayList<ToDoItem> getToDoList() {
 		
 		return toDoList;
 	}
 
 	@Override
-	/**
-	 * adds the specified item to the to-do list
-	 * @param ToDoItem object
-	 * @return void
-	 */
 	public void addToToDoList(ToDoItem item) {
 		toDoList.add(item);	
 	}
 
 	@Override
-	/**
-	 * removes the specified item from the to-do list
-	 * @param ToDoItem object
-	 * @return void
-	 */
-	public void removeFromToDoList(ToDoItem item) {
-		for(int i = 0; i < toDoList.size(); i++)
+	public void removeFromToDoList(int index) {
+		toDoList.remove(index);
+	}
+	
+	public void markCompleteAt(int index){
+		toDoList.get(index).setComplete(true);
+	}
+	
+	public void markIncompleteAt(int index){
+		toDoList.get(index).setComplete(false);
+	}
+
+	@Override
+	public ArrayList<ToDoItem> getCompleteList() {
+		ArrayList<ToDoItem> complete = new ArrayList<ToDoItem>();
+		for(ToDoItem i : toDoList)
 		{
-			ToDoItem current = toDoList.get(i);
-			if(current == item)
+			if(i.isComplete() == true)
 			{
-				toDoList.remove(i);
-				i--;
-			}			
-		}		
+				complete.add(i);
+			}
+		}
+		return complete;
+	}
+
+	@Override
+	public ArrayList<ToDoItem> getIncompleteList() {
+		ArrayList<ToDoItem> incomplete = new ArrayList<ToDoItem>();
+		for(ToDoItem i : toDoList)
+		{
+			if(i.isComplete() == false)
+			{
+				incomplete.add(i);
+			}
+		}
+		return incomplete;
 	}
 	
 }
