@@ -2,6 +2,7 @@ package catalyst.presentation;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -114,13 +115,14 @@ public class ToDoApp
 	public void getList()
 	{
 		int counter = 1;
-		
-		for(ToDoItem idx : ToDoService.getAll())
-		System.out.println(counter + ")  " + idx.getTask() + " " + idx.getDueDate() 
-			+ " " + idx.getAssignedUser() + " " + idx.isComplete() + " " 
-			+ idx.isInProgress() + ".");
-			
-		counter ++;
+		ArrayList<ToDoItem> theList = toDoService.getAll();
+		for(ToDoItem idx : theList)
+		{
+			System.out.println(counter + ")  " + idx.getTask() + " " + idx.getDueDate() 
+				+ " " + idx.getAssignedUser() + " " + idx.isComplete() + " " 
+				+ idx.isInProgress() + ".");
+			counter++;
+		}
 	}
 	
 	public void userChoice(int entryChoice)
@@ -128,7 +130,7 @@ public class ToDoApp
 		switch(entryChoice)
 		{
 			case 1:
-				
+				getList();
 				break;
 			
 			case 2:

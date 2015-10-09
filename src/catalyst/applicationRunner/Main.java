@@ -9,19 +9,19 @@ public class Main {
 	public static void main(String[] args) 
 	{
 		ToDoApp toDoApp = new ToDoApp();
-		ToDoArrayList toDoData = new ToDoArrayList();
+		ToDoArrayList toDoArrayList = new ToDoArrayList();
 		ToDoServiceImpl toDoService = new ToDoServiceImpl();
 		toDoApp.setToDoService(toDoService);
+		toDoService.setToDoData(toDoArrayList);
 		
+		int userInput = 0;
 		
-		toDoApp.displayMenu();
-		int userInput = toDoApp.getInput();
-		
-		while (userInput != 9)
+		do
 		{
+			 toDoApp.displayMenu();
+			 userInput = toDoApp.getInput();
 		     toDoApp.userChoice(userInput);
-		     toDoApp.displayMenu();
-		}
+		}while (userInput != 9);
 		
 		System.exit(0);	
 	}
