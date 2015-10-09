@@ -5,23 +5,44 @@ import java.util.ArrayList;
 import catalyst.application.ToDoItem;
 
 public class ToDoArrayList implements ToDoData{
-
+	
+	ArrayList<ToDoItem> toDoList = new ArrayList<ToDoItem>();
 	@Override
+	/**
+	 * returns the entire to-do list
+	 * @return ArrayList<ToDoItem>
+	 */
 	public ArrayList<ToDoItem> getToDoList() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return toDoList;
 	}
 
 	@Override
-	public void addToToDoList(String ToDo) {
-		// TODO Auto-generated method stub
-		
+	/**
+	 * adds the specified item to the to-do list
+	 * @param ToDoItem object
+	 * @return void
+	 */
+	public void addToToDoList(ToDoItem item) {
+		toDoList.add(item);	
 	}
 
 	@Override
-	public void removeFromToDoList(String ToDo) {
-		// TODO Auto-generated method stub
-		
+	/**
+	 * removes the specified item from the to-do list
+	 * @param ToDoItem object
+	 * @return void
+	 */
+	public void removeFromToDoList(ToDoItem item) {
+		for(int i = 0; i < toDoList.size(); i++)
+		{
+			ToDoItem current = toDoList.get(i);
+			if(current == item)
+			{
+				toDoList.remove(i);
+				i--;
+			}			
+		}		
 	}
 	
 }
