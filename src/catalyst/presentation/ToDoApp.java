@@ -23,7 +23,6 @@ public class ToDoApp
 
 	public void displayMenu()
 	{
-		System.out.println("Welcome to the To-Do List App!");
 		System.out.println("");
 		System.out.println("Please select from the following options");
 		System.out.println("");
@@ -142,7 +141,50 @@ public class ToDoApp
 	
 	public void updateTask()
 	{
+		getList();
+		getInput();
 		
+		String updateTask = null;
+		String getDate = null;
+		boolean inProgress = false;
+		String updateUser = null;
+		String updateInput = null;
+		
+		
+		System.out.println("Update the task: ");
+		updateTask = scan.nextLine();
+		
+		
+		System.out.println("Enter the new Due Date: ");
+		getDate = scan.nextLine();
+		Date updateDate = new Date ();
+		String pattern = "MM/dd/yyyy";
+	    SimpleDateFormat format = new SimpleDateFormat(pattern);
+	    try 
+	    {
+	      updateDate = format.parse(getDate);
+	    } 
+	    catch (ParseException e) 
+	    {
+	      e.printStackTrace();
+	    }
+		
+	    System.out.println("Is this task in progress? (yes or no): ");
+		String rawInput = scan.nextLine();
+		
+		if (rawInput == "yes"|| rawInput == "y")
+		{
+			inProgress = true;
+		}
+		else if (rawInput == "no" || rawInput == "n")
+		{
+			inProgress = false;
+		}
+		
+		System.out.println("Who has to finish this task?: ");
+		updateUser = scan.nextLine();
+		
+		toDoService.add(updateTask, inProgress, updateUser, updateDate);
 	}
 	
 	public void markTaskComplete()

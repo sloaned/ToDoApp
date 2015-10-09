@@ -14,6 +14,8 @@ public class Main {
 		toDoApp.setToDoService(toDoService);
 		toDoService.setToDoData(toDoArrayList);
 		
+		System.out.println("Welcome to the To-Do List App!");
+		
 		int userInput = 0;
 		
 		do
