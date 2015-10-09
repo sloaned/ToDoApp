@@ -178,16 +178,16 @@ public class ToDoApp
 			inProgress = true;
 			
 		}
-		else if (rawInput == "no" || rawInput == "n")
+		else if (rawInput.equals("no") || rawInput.equals("n"))
 		{
 			System.out.println("Is this task complete?");
 			String nextRawInput = scan.nextLine();
 			
-			if (nextRawInput == "yes"|| nextRawInput == "y")
+			if (nextRawInput.equals("yes") || nextRawInput.equals("y"))
 			{
 				isComplete = true;
 			}
-			else if (nextRawInput == "no" || nextRawInput == "n")
+			else if (nextRawInput.equals("no") || nextRawInput.equals("n"))
 			{
 				isComplete = false;
 			}
