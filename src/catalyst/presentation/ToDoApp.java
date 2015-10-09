@@ -75,13 +75,35 @@ public class ToDoApp
 		String pattern = "MM/dd/yyyy";
 	    SimpleDateFormat sdf = new SimpleDateFormat(pattern);
 	    Date date = new Date();
-		for(ToDoItem idx : theList)
+	    for(ToDoItem idx : theList)
 		{
+
 			date = idx.getDueDate();
 			dateString = sdf.format(date);
-			System.out.println(counter + ")  " + idx.getTask() + " " + dateString
-				+ " " + idx.getAssignedUser() + " " + idx.isComplete() + " " 
-				+ idx.isInProgress() + ".");
+
+			String isInProgress = null;
+			boolean inProgress = idx.isInProgress();
+			if(inProgress == true)
+			{
+				isInProgress = "Yes";
+				
+			}
+			else if(inProgress == false)
+			{
+				isInProgress = "No";
+			}
+			
+			System.out.println(counter + ")  "  + idx.getAssignedUser() + " needs to " + idx.getTask() + " and finish it by: " + dateString + "."); 
+			System.out.println( "\tIn progress? " + isInProgress);
+			
+			boolean complete = idx.isComplete();
+			String isCompleted = null;
+			
+			if(complete == true)
+			{
+				System.out.println("\tThis task is finished!");
+			}
+			
 			counter++;
 		}
 		
@@ -96,13 +118,35 @@ public class ToDoApp
 		String pattern = "MM/dd/yyyy";
 	    SimpleDateFormat sdf = new SimpleDateFormat(pattern);
 	    Date date = new Date();
-		for(ToDoItem idx : theList)
+	    for(ToDoItem idx : theList)
 		{
+
 			date = idx.getDueDate();
 			dateString = sdf.format(date);
-			System.out.println(counter + ")  " + idx.getTask() + " " + dateString
-				+ " " + idx.getAssignedUser() + " " + idx.isComplete() + " " 
-				+ idx.isInProgress() + ".");
+
+			String isInProgress = null;
+			boolean inProgress = idx.isInProgress();
+			if(inProgress == true)
+			{
+				isInProgress = "Yes";
+				
+			}
+			else if(inProgress == false)
+			{
+				isInProgress = "No";
+			}
+			
+			System.out.println(counter + ")  "  + idx.getAssignedUser() + " needs to " + idx.getTask() + " and finish it by: " + dateString + "."); 
+			System.out.println( "\tIn progress? " + isInProgress);
+			
+			boolean complete = idx.isComplete();
+			String isCompleted = null;
+			
+			if(complete == true)
+			{
+				System.out.println("\tThis task is finished!");
+			}
+			
 			counter++;
 		}
 	}
@@ -127,9 +171,15 @@ public class ToDoApp
 		
 		System.out.println("Enter the Due Date: ");
 		getDate = scan.nextLine();
+		while(!isDate(getDate))
+		{
+			System.out.println("Not a valid date");
+			getDate = scan.nextLine();
+		}
 		Date newDate = new Date ();
 		String pattern = "MM/dd/yyyy";
 	    SimpleDateFormat format = new SimpleDateFormat(pattern);
+		 
 	    try 
 	    {
 	      newDate = format.parse(getDate);
@@ -138,6 +188,9 @@ public class ToDoApp
 	    {
 	      e.printStackTrace();
 	    }
+	   
+	    
+	   
 		
 	    System.out.println("Is this task in progress? (yes or no): ");
 		rawInput = scan.nextLine();
@@ -156,6 +209,23 @@ public class ToDoApp
 		toDoService.add(newTask, inProgress, newUser, newDate);
 		
 		//scan.close();
+	}
+	
+	public boolean isDate(String input)
+	{
+		Date newDate = new Date ();
+		String pattern = "MM/dd/yyyy";
+	    SimpleDateFormat format = new SimpleDateFormat(pattern);
+		 try 
+		    {
+		      newDate = format.parse(input);
+		      return true;
+		    } 
+		    catch (ParseException e) 
+		    {
+		      //e.printStackTrace();
+		      return false;
+		    }
 	}
 	
 	public void removeListItem()
@@ -293,10 +363,6 @@ public class ToDoApp
 
 			date = idx.getDueDate();
 			dateString = sdf.format(date);
-			
-			System.out.println(counter + ")  " + idx.getTask() + " " + dateString 
-				+ " " + idx.getAssignedUser() + " " + idx.isComplete() + " " 
-				+ idx.isInProgress() + ".");
 
 			String isInProgress = null;
 			boolean inProgress = idx.isInProgress();
@@ -310,16 +376,13 @@ public class ToDoApp
 				isInProgress = "No";
 			}
 			
-			System.out.println(counter + ")  "  + idx.getAssignedUser() + " needs to " + idx.getTask() + " and finish it by: " + idx.getDueDate() + "."); 
+			System.out.println(counter + ")  "  + idx.getAssignedUser() + " needs to " + idx.getTask() + " and finish it by: " + dateString + "."); 
 			System.out.println( "\tIn progress? " + isInProgress);
 			
 			boolean complete = idx.isComplete();
 			String isCompleted = null;
-			if(complete == false)
-			{
-				break;
-			}
-			else if(complete == true)
+			
+			if(complete == true)
 			{
 				System.out.println("\tThis task is finished!");
 			}

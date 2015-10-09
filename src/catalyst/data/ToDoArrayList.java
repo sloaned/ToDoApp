@@ -18,7 +18,7 @@ public class ToDoArrayList implements ToDoData{
 	public void addToToDoList(ToDoItem item) {
 		toDoList.add(item);	
 		Date date = item.getDueDate();
-		System.out.println("This is the date in the data layer: " + date);
+		//System.out.println("number of items in to-do list now = " + toDoList.size());
 	}
 
 	@Override
@@ -28,6 +28,7 @@ public class ToDoArrayList implements ToDoData{
 	
 	public void markCompleteAt(int index){
 		toDoList.get(index).setComplete(true);
+		toDoList.get(index).setInProgress(false);
 	}
 	
 	public void markIncompleteAt(int index){

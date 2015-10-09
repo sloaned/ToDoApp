@@ -25,9 +25,34 @@ public interface ToDoData {
 	 */
 	void removeFromToDoList(int index);
 	
+	/**
+	 * marks an item incomplete at the given index
+	 * @param index
+	 */
 	void markIncompleteAt(int index);
+	
+	/**
+	 * marks an item complete at the given index
+	 * @param index
+	 */
 	void markCompleteAt(int index);
+	
+	/**
+	 * updates the list by replacing the toDoList item at the given index with updated item
+	 * @param index
+	 * @param item
+	 */
 	void updateToDoList(int index, ToDoItem item);
+	
+	/**
+	 * gets the list of all completed to-do list items
+	 * @return ArrayList of ToDoItem
+	 */
 	ArrayList<ToDoItem> getCompleteList();
+	
+	/**
+	 * gets the list of all incomplete to-do list items
+	 * @return ArrayList of ToDoItem
+	 */
 	ArrayList<ToDoItem> getIncompleteList();
 }
