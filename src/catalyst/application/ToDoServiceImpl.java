@@ -58,9 +58,9 @@ public class ToDoServiceImpl implements ToDoService {
 	}
 
 	@Override
-	public void update(int choice, String task, boolean inProgress, boolean isComplete, String assignedUser, Date dueDate) {
-		choice --;
-		ToDoItem item = new ToDoItem(task, inProgress, isComplete, assignedUser, dueDate);
+	public void update(int choice, String task, boolean complete, boolean inProgress, String assignedUser, Date dueDate) {
+		choice--;
+		ToDoItem item = new ToDoItem(task, complete, inProgress, assignedUser, dueDate);
 		toDoData.updateToDoList(choice, item);
 		
 	}
