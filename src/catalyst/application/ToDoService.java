@@ -15,7 +15,7 @@ import java.util.Date;
 		void markIncomplete(int index);
 		ArrayList<ToDoItem> getComplete();
 		ArrayList<ToDoItem> getIncomplete();
-	
+		void update(int choice, String task, boolean inProgress, String assignedUser, Date dueDate);
 	}
 
 
