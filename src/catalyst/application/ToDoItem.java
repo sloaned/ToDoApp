@@ -9,6 +9,22 @@ public class ToDoItem {
 	private String assignedUser;
 	private Date dueDate;
 	
+	public ToDoItem(String task){
+		this.task = task;
+		this.complete = false;
+		this.inProgress = false;
+		this.assignedUser = null;
+		this.dueDate = null;
+	}
+	
+	public ToDoItem(String task, boolean complete, boolean inProgress, String assignedUser, Date dueDate){
+		this.task = task;
+		this.complete = complete;
+		this.inProgress = inProgress;
+		this.assignedUser = assignedUser;
+		this.dueDate = dueDate;
+	}
+	
 	public String getTask() {
 		return task;
 	}
