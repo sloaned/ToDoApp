@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ToDoApp 
 {
-	
+	Scanner scan = new Scanner(System.in);
 	public void displayMenu()
 	{
 		System.out.println("Welcome to the To-Do List App!");
@@ -25,7 +25,7 @@ public class ToDoApp
 	
 	public int getInput()
 	{
-		Scanner scan = new Scanner(System.in);
+		
 		
 		displayMenu();
 		
@@ -47,7 +47,9 @@ public class ToDoApp
             }
 			
 		}while (notValid);
-		
+		scan.close();
 		return entryChoice;
+		
+		
 	}
 }
