@@ -1,7 +1,5 @@
 package catalyst.application;
 
-public interface ToDoService 
-{
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -16,3 +14,4 @@ public interface ToDoService {
 	ArrayList<ToDoItem> getIncomplete();
 	
 }
+
