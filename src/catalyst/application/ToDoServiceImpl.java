@@ -56,4 +56,11 @@ public class ToDoServiceImpl implements ToDoService {
 	public ArrayList<ToDoItem> getIncomplete() {
 		return toDoData.getIncompleteList();
 	}
+
+	@Override
+	public void update(int choice, String task, boolean inProgress, String assignedUser, Date dueDate) {
+		ToDoItem item = new ToDoItem(task, false, inProgress, assignedUser, dueDate);
+		toDoData.updateToDoList(choice, item);
+		
+	}
 }
