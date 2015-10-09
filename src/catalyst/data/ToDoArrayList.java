@@ -59,8 +59,7 @@ public class ToDoArrayList implements ToDoData{
 
 	@Override
 	public void updateToDoList(int index, ToDoItem item) {
-		toDoList.set(index, item);
-		
+		toDoList.set(index, item);	
 	}
 	
 }

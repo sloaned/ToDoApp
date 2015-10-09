@@ -105,11 +105,11 @@ public class ToDoApp
 		
 	    System.out.println("Is this task in progress? (yes or no): ");
 		rawInput = scan.nextLine();
-		if (rawInput == "yes"|| rawInput == "y")
+		if (rawInput.equals("yes") || rawInput.equals("y"))
 		{
 			inProgress = true;
 		}
-		else if (rawInput == "no" || rawInput == "n")
+		else if (rawInput.equals("no") || rawInput.equals("n"))
 		{
 			inProgress = false;
 		}
