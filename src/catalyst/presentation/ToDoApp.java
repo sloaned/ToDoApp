@@ -67,12 +67,13 @@ public class ToDoApp
 	
 	public void showLeftToDo()
 	{
+		toDoService.getComplete();
 		
 	}
 	
 	public void showCompleted()
 	{
-		
+		toDoService.getIncomplete();
 	}
 	
 	public void getNewTask()
@@ -141,13 +142,14 @@ public class ToDoApp
 	public void updateTask()
 	{
 		getList();
-		getInput();
+		int userEntry = getInput();
 		
 		String updateTask = null;
 		String getDate = null;
 		boolean inProgress = false;
 		String updateUser = null;
 		String updateInput = null;
+		boolean isComplete = false;
 		
 		
 		System.out.println("Update the task: ");
@@ -174,26 +176,70 @@ public class ToDoApp
 		if (rawInput == "yes"|| rawInput == "y")
 		{
 			inProgress = true;
+			
 		}
 		else if (rawInput == "no" || rawInput == "n")
 		{
+			System.out.println("Is this task complete?");
+			String nextRawInput = scan.nextLine();
+			
+			if (nextRawInput == "yes"|| nextRawInput == "y")
+			{
+				isComplete = true;
+			}
+			else if (nextRawInput == "no" || nextRawInput == "n")
+			{
+				isComplete = false;
+			}
+			
+			if (isComplete == false)
+			{
+				System.out.println("Who has to finish this task?: ");
+				updateUser = scan.nextLine();
+			}
+			else if (isComplete == true)
+			{
+				System.out.println("Who finished this task?: ");
+				updateUser = scan.nextLine();
+			}
 			inProgress = false;
 		}
 		
-		System.out.println("Who has to finish this task?: ");
-		updateUser = scan.nextLine();
-		
-		toDoService.add(updateTask, inProgress, updateUser, updateDate);
+		toDoService.update(userEntry, updateTask, inProgress, isComplete, updateUser, updateDate);
 	}
 	
 	public void markTaskComplete()
 	{
+		getList();
 		
+		int rawInput = getInput();
+		ArrayList<ToDoItem> toDo = toDoService.getAll();
+		
+		
+		while(rawInput > toDo.size() || rawInput < 0)
+		{
+			System.out.println("That is not an item in the list. Try again");
+			rawInput = getInput();
+		}
+		
+		toDoService.markComplete(rawInput);
 	}
 	
 	public void markTaskIncomplete()
 	{
+		getList();
 		
+		int rawInput = getInput();
+		ArrayList<ToDoItem> toDo = toDoService.getAll();
+		
+		
+		while(rawInput > toDo.size() || rawInput < 0)
+		{
+			System.out.println("That is not an item in the list. Try again");
+			rawInput = getInput();
+		}
+		
+		toDoService.markIncomplete(rawInput);
 	}
 	
 	public void getList()
