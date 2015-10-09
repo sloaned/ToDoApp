@@ -129,15 +129,14 @@ public class ToDoApp
 		int rawInput = getInput();
 		ArrayList<ToDoItem> toDo = toDoService.getAll();
 		
-		if(rawInput <= toDo.size())
+		
+		while(rawInput > toDo.size() || rawInput < 0)
 		{
-			toDoService.remove(rawInput);
+			System.out.println("That is not an item in the list. Try again");
+			rawInput = getInput();
 		}
-		else if(rawInput > toDo.size())
-		{
-			System.out.println("That's not an item on the list.  Try again.");
-			getInput();
-		}	
+		
+		toDoService.remove(rawInput);
 	}
 	
 	public void updateTask()

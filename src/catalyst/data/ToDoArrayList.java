@@ -56,5 +56,11 @@ public class ToDoArrayList implements ToDoData{
 		}
 		return incomplete;
 	}
+
+	@Override
+	public void updateToDoList(int index, ToDoItem item) {
+		toDoList.set(index, item);
+		
+	}
 	
 }
