@@ -1,6 +1,7 @@
 package catalyst.data;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import catalyst.application.ToDoItem;
 
@@ -16,6 +17,8 @@ public class ToDoArrayList implements ToDoData{
 	@Override
 	public void addToToDoList(ToDoItem item) {
 		toDoList.add(item);	
+		Date date = item.getDueDate();
+		System.out.println("This is the date in the data layer: " + date);
 	}
 
 	@Override

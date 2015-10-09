@@ -71,9 +71,15 @@ public class ToDoApp
 
 		ArrayList<ToDoItem> theList = toDoService.getIncomplete();
 		
+		String dateString = "";
+		String pattern = "MM/dd/yyyy";
+	    SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+	    Date date = new Date();
 		for(ToDoItem idx : theList)
 		{
-			System.out.println(counter + ")  " + idx.getTask() + " " + idx.getDueDate() 
+			date = idx.getDueDate();
+			dateString = sdf.format(date);
+			System.out.println(counter + ")  " + idx.getTask() + " " + dateString
 				+ " " + idx.getAssignedUser() + " " + idx.isComplete() + " " 
 				+ idx.isInProgress() + ".");
 			counter++;
@@ -86,9 +92,15 @@ public class ToDoApp
 		int counter = 1;
 
 		ArrayList<ToDoItem> theList = toDoService.getComplete();
+		String dateString = "";
+		String pattern = "MM/dd/yyyy";
+	    SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+	    Date date = new Date();
 		for(ToDoItem idx : theList)
 		{
-			System.out.println(counter + ")  " + idx.getTask() + " " + idx.getDueDate() 
+			date = idx.getDueDate();
+			dateString = sdf.format(date);
+			System.out.println(counter + ")  " + idx.getTask() + " " + dateString
 				+ " " + idx.getAssignedUser() + " " + idx.isComplete() + " " 
 				+ idx.isInProgress() + ".");
 			counter++;
@@ -172,7 +184,7 @@ public class ToDoApp
 		String getDate = null;
 		boolean inProgress = false;
 		String updateUser = null;
-		String updateInput = null;
+		//String updateInput = null;
 		boolean isComplete = false;
 		
 		
@@ -271,9 +283,17 @@ public class ToDoApp
 		int counter = 1;
 
 		ArrayList<ToDoItem> theList = toDoService.getAll();
+		
+		String dateString = "";
+		String pattern = "MM/dd/yyyy";
+	    SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+	    Date date = new Date();
 		for(ToDoItem idx : theList)
 		{
-			System.out.println(counter + ")  " + idx.getTask() + " " + idx.getDueDate() 
+			date = idx.getDueDate();
+			dateString = sdf.format(date);
+			
+			System.out.println(counter + ")  " + idx.getTask() + " " + dateString 
 				+ " " + idx.getAssignedUser() + " " + idx.isComplete() + " " 
 				+ idx.isInProgress() + ".");
 			counter++;
