@@ -3,19 +3,21 @@ package catalyst.application;
 import java.util.ArrayList;
 import java.util.Date;
 
+import catalyst.data.ToDoArrayList;
 import catalyst.data.ToDoData;
 
 public class ToDoServiceImpl implements ToDoService {
 
 	// Dependency to ToDoData
 	private ToDoData toDoData;
+	ToDoArrayList toDoArrayList = new ToDoArrayList();
 	
 	public void setToDoData(ToDoData toDoData) 
 	{
 		this.toDoData = toDoData;
 	}
-	public void add(String task, boolean inProgress, String assignedUser, Date dueDate)
-	{
+
+	public void add(String task, boolean inProgress, String assignedUser, Date dueDate){
 		ToDoItem item = new ToDoItem(task, false, inProgress, assignedUser, dueDate);
 		toDoData.addToToDoList(item);
 	}

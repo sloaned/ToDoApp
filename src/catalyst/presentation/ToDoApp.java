@@ -119,7 +119,7 @@ public class ToDoApp
 		
 		toDoService.add(newTask, inProgress, newUser, newDate);
 		
-		scan.close();
+		//scan.close();
 	}
 	
 	public void removeListItem()
@@ -158,13 +158,15 @@ public class ToDoApp
 	public void getList()
 	{
 		int counter = 1;
-		
-		for(ToDoItem idx : toDoService.getAll())
-		System.out.println(counter + ")  " + idx.getTask() + " " + idx.getDueDate() 
-			+ " " + idx.getAssignedUser() + " " + idx.isComplete() + " " 
-			+ idx.isInProgress() + ".");
-			
-		counter ++;
+
+		ArrayList<ToDoItem> theList = toDoService.getAll();
+		for(ToDoItem idx : theList)
+		{
+			System.out.println(counter + ")  " + idx.getTask() + " " + idx.getDueDate() 
+				+ " " + idx.getAssignedUser() + " " + idx.isComplete() + " " 
+				+ idx.isInProgress() + ".");
+			counter++;
+		}
 	}
 	
 	public void userChoice(int entryChoice)
