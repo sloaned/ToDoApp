@@ -27,7 +27,7 @@ public interface ToDoData {
 	
 	void markIncompleteAt(int index);
 	void markCompleteAt(int index);
-	
+	void updateToDoList(int index, ToDoItem item);
 	ArrayList<ToDoItem> getCompleteList();
 	ArrayList<ToDoItem> getIncompleteList();
 }

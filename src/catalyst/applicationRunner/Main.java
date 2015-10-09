@@ -24,7 +24,7 @@ public class Main {
 			 userInput = toDoApp.getInput();
 		     toDoApp.userChoice(userInput);
 		}while (userInput != 9);
-		
+		System.out.println("\nGoodbye!");
 		System.exit(0);	
 	}
 
