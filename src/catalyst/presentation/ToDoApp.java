@@ -205,7 +205,7 @@ public class ToDoApp
 			inProgress = false;
 		}
 		
-		toDoService.update(userEntry, updateTask, inProgress, isComplete, updateUser, updateDate);
+		toDoService.update(userEntry, updateTask, isComplete, inProgress, updateUser, updateDate);
 	}
 	
 	public void markTaskComplete()
@@ -247,6 +247,7 @@ public class ToDoApp
 		int counter = 1;
 
 		ArrayList<ToDoItem> theList = toDoService.getAll();
+		System.out.println("Item #    Task name   Due Date                       Assigned User        Complete?      In Progress?");
 		for(ToDoItem idx : theList)
 		{
 			System.out.println(counter + ")  " + idx.getTask() + " " + idx.getDueDate() 
