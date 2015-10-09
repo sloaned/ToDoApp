@@ -7,7 +7,9 @@ import catalyst.data.ToDoData;
 
 public class ToDoServiceImpl implements ToDoService {
 
+	// Dependency to ToDoData
 	private ToDoData toDoData;
+	
 	public void add(String task, boolean inProgress, String assignedUser, Date dueDate){
 		
 		ToDoItem item = new ToDoItem(task, false, inProgress, assignedUser, dueDate);

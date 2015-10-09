@@ -5,13 +5,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
+import catalyst.application.ToDoItem;
 import catalyst.application.ToDoService;
 
 public class ToDoApp 
 {
+	// dependency to ToDoService interface
 	private ToDoService toDoService;
 	
-	public void setToDoServicee(ToDoService toDoService) 
+	public void setToDoService(ToDoService toDoService) 
 	{
 		this.toDoService = toDoService;
 	}
@@ -35,17 +37,15 @@ public class ToDoApp
 		System.out.println("");
 		System.out.println("9) Ok, I'm finished here");
 		System.out.println("");
-		
-		getInput();
 	}
 			
 	public int getInput()
 	{
-		displayMenu();
-		
 		boolean notValid = true;
 		String rawEntry = null;
 		int entryChoice = 0;
+		
+		System.out.println("Please enter your choice: ");
 		
 		do
 		{
@@ -62,7 +62,6 @@ public class ToDoApp
 			
 		}while (notValid);
 
-		scan.close();
 		return entryChoice;		
 	}
 	
@@ -77,6 +76,7 @@ public class ToDoApp
 		
 		System.out.println("Enter a new task: ");
 		newTask = scan.nextLine();
+		
 		
 		System.out.println("Enter the Due Date: ");
 		getDate = scan.nextLine();
@@ -108,12 +108,19 @@ public class ToDoApp
 		
 		toDoService.add(newTask, inProgress, newUser, newDate);
 		
-		scan.close();
+		//scan.close();
 	}
 	
 	public void getList()
 	{
+		int counter = 1;
 		
+		for(ToDoItem idx : ToDoService.getAll())
+		System.out.println(counter + ")  " + idx.getTask() + " " + idx.getDueDate() 
+			+ " " + idx.getAssignedUser() + " " + idx.isComplete() + " " 
+			+ idx.isInProgress() + ".");
+			
+		counter ++;
 	}
 	
 	public void userChoice(int entryChoice)
@@ -121,9 +128,11 @@ public class ToDoApp
 		switch(entryChoice)
 		{
 			case 1:
-				getList();
+				
+				break;
 			
 			case 2:
+				getNewTask();
 				break;
 			
 			case 3:
