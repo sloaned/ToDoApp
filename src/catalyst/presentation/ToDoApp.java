@@ -67,13 +67,32 @@ public class ToDoApp
 	
 	public void showLeftToDo()
 	{
-		toDoService.getComplete();
+		int counter = 1;
+
+		ArrayList<ToDoItem> theList = toDoService.getIncomplete();
+		
+		for(ToDoItem idx : theList)
+		{
+			System.out.println(counter + ")  " + idx.getTask() + " " + idx.getDueDate() 
+				+ " " + idx.getAssignedUser() + " " + idx.isComplete() + " " 
+				+ idx.isInProgress() + ".");
+			counter++;
+		}
 		
 	}
 	
 	public void showCompleted()
 	{
-		toDoService.getIncomplete();
+		int counter = 1;
+
+		ArrayList<ToDoItem> theList = toDoService.getComplete();
+		for(ToDoItem idx : theList)
+		{
+			System.out.println(counter + ")  " + idx.getTask() + " " + idx.getDueDate() 
+				+ " " + idx.getAssignedUser() + " " + idx.isComplete() + " " 
+				+ idx.isInProgress() + ".");
+			counter++;
+		}
 	}
 	
 	public void getNewTask()
@@ -88,6 +107,11 @@ public class ToDoApp
 		System.out.println("Enter a new task: ");
 		newTask = scan.nextLine();
 		
+		while(newTask.length() < 1 || newTask.equals(" "))
+		{
+			System.out.println("Enter a new task: ");
+			newTask = scan.nextLine();
+		}
 		
 		System.out.println("Enter the Due Date: ");
 		getDate = scan.nextLine();
@@ -247,7 +271,6 @@ public class ToDoApp
 		int counter = 1;
 
 		ArrayList<ToDoItem> theList = toDoService.getAll();
-		System.out.println("Item #    Task name   Due Date                       Assigned User        Complete?      In Progress?");
 		for(ToDoItem idx : theList)
 		{
 			System.out.println(counter + ")  " + idx.getTask() + " " + idx.getDueDate() 
