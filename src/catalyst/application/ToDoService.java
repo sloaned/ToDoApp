@@ -1,6 +1,7 @@
 package catalyst.application;
 
-public interface ToDoService {
+public interface ToDoService 
+{
 	
 	
 }

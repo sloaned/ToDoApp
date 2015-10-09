@@ -1,14 +1,19 @@
 package catalyst.presentation;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
+
+import catalyst.application.ToDoService;
 
 public class ToDoApp 
 {
-	private ToDoItem toDoItem
+	private ToDoService toDoService;
 	
-	
-	public void setEmployeeService(EmployeeService employeeService) {
-		this.employeeService = employeeService;
+	public void setToDoServicee(ToDoService toDoService) 
+	{
+		this.toDoService = toDoService;
 	}
 	
 	Scanner scan = new Scanner(System.in);
@@ -20,17 +25,22 @@ public class ToDoApp
 		System.out.println("Please select from the following options");
 		System.out.println("");
 		System.out.println("1) What's on my list today?");
-		System.out.println("2) Show me what I have left to do!");
-		System.out.println("3) Show me what I've done, I need a confidence boost...");
+		System.out.println("2) Time to add some new tasks");
+		System.out.println("3) I need to fix a task!");
+		System.out.println("4) I gotta get rid of something.");
+		System.out.println("5) I finished something!");
+		System.out.println("6) Just kidding, I didn't finish something...");
+		System.out.println("7) Show me what I have left to do!");
+		System.out.println("8) Show me what I've done, I need a confidence boost...");
 		System.out.println("");
-		System.out.println("4) Ok, I'm finished here");
+		System.out.println("9) Ok, I'm finished here");
 		System.out.println("");
+		
+		getInput();
 	}
-	
-	{		
-	
-{
-
+			
+	public int getInput()
+	{
 		displayMenu();
 		
 		boolean notValid = true;
@@ -53,29 +63,77 @@ public class ToDoApp
 		}while (notValid);
 
 		scan.close();
-		return entryChoice;
-		
-		
+		return entryChoice;		
 	}
 	
-	public String getNewTask()
+	public void getNewTask()
 	{
 		String newTask = null;
+		String getDate = null;
+		boolean inProgress = false;
+		String newUser = null;
+		String rawInput = null;
+		
+		
 		System.out.println("Enter a new task: ");
 		newTask = scan.nextLine();
 		
-		return newTask;
+		System.out.println("Enter the Due Date: ");
+		getDate = scan.nextLine();
+		Date newDate = new Date ();
+		String pattern = "MM/dd/yyyy";
+	    SimpleDateFormat format = new SimpleDateFormat(pattern);
+	    try 
+	    {
+	      newDate = format.parse(getDate);
+	    } 
+	    catch (ParseException e) 
+	    {
+	      e.printStackTrace();
+	    }
+		
+	    System.out.println("Is this task in progress? (yes or no): ");
+		rawInput = scan.nextLine();
+		if (rawInput == "yes"|| rawInput == "y")
+		{
+			inProgress = true;
+		}
+		else if (rawInput == "no" || rawInput == "n")
+		{
+			inProgress = false;
+		}
+		
+		System.out.println("Who has to finish this task?: ");
+		newUser = scan.nextLine();
+		
+		toDoService.add(newTask, inProgress, newUser, newDate);
+		
+		scan.close();
 	}
 	
-	public void changeList()
+	public void getList()
 	{
-		System.out.println("1) Time to add some new tasks");
-		System.out.println("2) I need to fix a task!");
-		System.out.println("3) I gotta get rid of something.");
-		System.out.println("4) I finished something!");
-		System.out.println("5) Just kidding, I didn't finish something...");
-		System.out.println("");
-		System.out.println("6) Ok, I'm finished here");
-		System.out.println("");
+		
+	}
+	
+	public void userChoice(int entryChoice)
+	{
+		switch(entryChoice)
+		{
+			case 1:
+				getList();
+			
+			case 2:
+				break;
+			
+			case 3:
+				break;
+			
+			case 4:
+				break;
+			
+			default: 
+				break;
+		}
 	}
 }
