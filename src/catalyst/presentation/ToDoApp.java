@@ -12,7 +12,7 @@ public class ToDoApp
 	}
 	
 	Scanner scan = new Scanner(System.in);
-	
+
 	public void displayMenu()
 	{
 		System.out.println("Welcome to the To-Do List App!");
@@ -27,8 +27,10 @@ public class ToDoApp
 		System.out.println("");
 	}
 	
-	public int getInput()
 	{		
+	
+{
+
 		displayMenu();
 		
 		boolean notValid = true;
@@ -49,9 +51,11 @@ public class ToDoApp
             }
 			
 		}while (notValid);
-		
+
 		scan.close();
 		return entryChoice;
+		
+		
 	}
 	
 	public String getNewTask()
