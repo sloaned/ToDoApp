@@ -19,7 +19,7 @@ public class ToDoApp
 		this.toDoService = toDoService;
 	}
 	
-	Scanner scan = new Scanner(System.in);
+	public Scanner scan = new Scanner(System.in);
 
 	public void displayMenu()
 	{
