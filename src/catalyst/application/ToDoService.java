@@ -8,7 +8,8 @@ import java.util.Date;
 		
 		void add(String task, boolean inProgress, String assignedUser, Date dueDate);
 		void remove(int index);
-		static ArrayList<ToDoItem> getAll()
+
+		static ArrayList<ToDoItem> getAll() 
 		{
 			// TODO Auto-generated method stub
 			return null;
@@ -18,5 +19,6 @@ import java.util.Date;
 		ArrayList<ToDoItem> getComplete();
 		ArrayList<ToDoItem> getIncomplete();
 	
-}
+	}
+
 
