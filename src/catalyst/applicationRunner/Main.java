@@ -12,6 +12,7 @@ public class Main {
 		ToDoArrayList toDoData = new ToDoArrayList();
 		ToDoServiceImpl toDoService = new ToDoServiceImpl();
 		toDoApp.setToDoService(toDoService);
+		toDoService.setToDoData(toDoData);
 		
 		
 		toDoApp.displayMenu();

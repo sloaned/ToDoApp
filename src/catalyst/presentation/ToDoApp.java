@@ -2,6 +2,7 @@ package catalyst.presentation;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -46,7 +47,7 @@ public class ToDoApp
 		int entryChoice = 0;
 		
 		System.out.println("Please enter your choice: ");
-		
+	
 		do
 		{
 			rawEntry = scan.nextLine();
@@ -63,6 +64,16 @@ public class ToDoApp
 		}while (notValid);
 
 		return entryChoice;		
+	}
+	
+	public void showLeftToDo()
+	{
+		
+	}
+	
+	public void showCompleted()
+	{
+		
 	}
 	
 	public void getNewTask()
@@ -111,11 +122,44 @@ public class ToDoApp
 		scan.close();
 	}
 	
+	public void removeListItem()
+	{
+		getList();
+		
+		int rawInput = getInput();
+		ArrayList<ToDoItem> toDo = toDoService.getAll();
+		
+		if(rawInput <= toDo.size())
+		{
+			toDoService.remove(rawInput);
+		}
+		else if(rawInput > toDo.size())
+		{
+			System.out.println("That's not an item on the list.  Try again.");
+			getInput();
+		}	
+	}
+	
+	public void updateTask()
+	{
+		
+	}
+	
+	public void markTaskComplete()
+	{
+		
+	}
+	
+	public void markTaskIncomplete()
+	{
+		
+	}
+	
 	public void getList()
 	{
 		int counter = 1;
 		
-		for(ToDoItem idx : ToDoService.getAll())
+		for(ToDoItem idx : toDoService.getAll())
 		System.out.println(counter + ")  " + idx.getTask() + " " + idx.getDueDate() 
 			+ " " + idx.getAssignedUser() + " " + idx.isComplete() + " " 
 			+ idx.isInProgress() + ".");
@@ -128,7 +172,7 @@ public class ToDoApp
 		switch(entryChoice)
 		{
 			case 1:
-				
+				getList();
 				break;
 			
 			case 2:
@@ -136,9 +180,27 @@ public class ToDoApp
 				break;
 			
 			case 3:
+				updateTask();
 				break;
 			
 			case 4:
+				removeListItem();
+				break;
+			
+			case 5:
+				markTaskComplete();
+				break;
+			
+			case 6:
+				markTaskIncomplete();
+				break;
+			
+			case 7:
+				showLeftToDo();
+				break;
+			
+			case 8:
+				showCompleted();
 				break;
 			
 			default: 
