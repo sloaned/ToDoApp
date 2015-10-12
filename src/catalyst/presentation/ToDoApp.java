@@ -367,8 +367,7 @@ public class ToDoApp
 		}	
 		return userInput;
 	}
-	
-	
+		
 	/**
 	 * gets integer from user to correspond with their menu choice
 	 * @return
@@ -423,8 +422,7 @@ public class ToDoApp
 	{
 		ArrayList<ToDoItem> theList = toDoService.getIncomplete();
 		System.out.println("The following tasks are incomplete!:");
-		showList(theList);
-	
+		showList(theList);	
 	}
 	
 	/**
