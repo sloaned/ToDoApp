@@ -126,7 +126,7 @@ public class ToDoApp
 	public void updateTask()
 	{
 		getList();
-		String userEntry = getStringInput();
+		int userEntry = getStringInput();
 		
 		String updateTask = null;
 		String getDate = null;
