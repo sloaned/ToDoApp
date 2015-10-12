@@ -56,7 +56,7 @@ public class ToDoApp
 		System.out.println("Enter a new task: ");
 		newTask = scan.nextLine();
 		
-		while(newTask.length() < 1 || newTask.equals(" "))
+		while(newTask.trim().length() < 1)
 		{
 			System.out.println("Enter a new task: ");
 			newTask = scan.nextLine();
@@ -101,7 +101,7 @@ public class ToDoApp
 		
 		System.out.println("Who has to finish this task?: ");
 		newUser = scan.nextLine();
-		while(newUser.length() < 1 || newUser.equals(" "))
+		while(newUser.trim().length() < 1)
 		{
 			System.out.println("Enter a new task: ");
 			newUser = scan.nextLine();
@@ -139,7 +139,11 @@ public class ToDoApp
 		
 		System.out.println("Update the task: ");
 		updateTask = scan.nextLine();
-		
+		while(updateTask.trim().length() < 1)
+		{
+			System.out.println("Enter a new task: ");
+			updateTask = scan.nextLine();
+		}
 		
 		System.out.println("Enter the new Due Date: ");
 		getDate = scan.nextLine();
@@ -163,7 +167,7 @@ public class ToDoApp
 			inProgress = true;
 			System.out.println("Who has to finish this task?: ");
 			updateUser = scan.nextLine();
-			while(updateUser.length() < 1 || updateUser.equals(" "))
+			while(updateUser.trim().length() < 1)
 			{
 				System.out.println("Enter a new task: ");
 				updateUser = scan.nextLine();
