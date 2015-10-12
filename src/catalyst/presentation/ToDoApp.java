@@ -126,7 +126,7 @@ public class ToDoApp
 	public void updateTask()
 	{
 		getList();
-		String userEntry = getStringInput();
+		int userEntry = getStringInput();
 		
 		String updateTask = null;
 		String getDate = null;
@@ -243,7 +243,7 @@ public class ToDoApp
 	{
 		getList();
 		
-		int rawInput = getInput();
+		int rawInput = getStringInput();
 		ArrayList<ToDoItem> toDo = toDoService.getAll();
 		
 		
@@ -260,7 +260,7 @@ public class ToDoApp
 	{
 		getList();
 		
-		int rawInput = getInput();
+		int rawInput = getStringInput();
 		ArrayList<ToDoItem> toDo = toDoService.getAll();
 		
 		
@@ -277,7 +277,7 @@ public class ToDoApp
 	{
 		getList();
 		
-		int rawInput = getInput();
+		int rawInput = getStringInput();
 		ArrayList<ToDoItem> toDo = toDoService.getAll();
 		
 		
