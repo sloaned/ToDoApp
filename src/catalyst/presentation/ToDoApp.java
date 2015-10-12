@@ -342,30 +342,6 @@ public class ToDoApp
 				}
 				rawEntry = scan.nextLine();
 			}
-			/*try 
-            {
-				if(!isNumber(rawEntry))
-				{
-					if(toDoService.inList(rawEntry))
-					{
-						userInput = toDoService.getLineNumber(rawEntry);	
-					}
-				}
-				else
-				{
-					userInput = Integer.parseInt(rawEntry);
-					ArrayList<ToDoItem> toDo = toDoService.getAll();
-				
-					while(userInput > toDo.size() || userInput < 0)
-					{
-						System.out.println("That is not an item in the list. Try again");
-					}
-				}
-            } 
-            catch (Exception e) 
-            {
-                System.out.println("Invalid input.  Try again.");
-            }*/
 		}while (notValid);
 		
 		return userInput;
