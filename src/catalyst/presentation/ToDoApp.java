@@ -107,7 +107,7 @@ public class ToDoApp
 			newUser = scan.nextLine();
 		}
 		
-		System.out.println("Did you want to add a description about this task? (yes or no");
+		System.out.println("Did you want to add a description about this task? (yes or no)");
 		getAnswer = scan.nextLine();
 		if(getAnswer == "no" || getAnswer == "n")
 		{
@@ -229,6 +229,16 @@ public class ToDoApp
 		    {
 		      return false;
 		    }
+	}
+	
+	public void selectUserTasks()
+	{
+		System.out.println("Input the name of a user you want to find the tasks for: ");
+		String getName = scan.nextLine();
+		
+		ArrayList<ToDoItem> theList = toDoService.getUserTask(getName);
+		showList(theList);
+		
 	}
 	
 	public void removeListItem()

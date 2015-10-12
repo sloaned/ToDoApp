@@ -82,7 +82,7 @@ public class ToDoArrayList implements ToDoData{
 		ArrayList<ToDoItem> user = new ArrayList<ToDoItem>();
 		for(ToDoItem i : toDoList)
 		{
-			if(i.getAssignedUser() == userName)
+			if(i.getAssignedUser().equals(userName))
 			{
 				user.add(i);
 			}
