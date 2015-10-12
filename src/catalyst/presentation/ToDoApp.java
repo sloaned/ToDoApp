@@ -158,6 +158,12 @@ public class ToDoApp
 			System.out.println("Enter a new task: ");
 			newTask = scan.nextLine();
 		}
+		while(toDoService.inList(newTask) == true)
+		{
+			System.out.println("That task already exists, please enter a unique task name.");
+			newTask = scan.nextLine();
+		}
+		
 		
 		System.out.println("Enter the Due Date: ");
 		getDate = scan.nextLine();
@@ -185,13 +191,18 @@ public class ToDoApp
 		{
 			inProgress = true;
 		}
-		else if (rawInput.equals("no") || rawInput.equals("n"))
+		else 
 		{
 			inProgress = false;
 		}
 		
 		System.out.println("Who has to finish this task?: ");
 		newUser = scan.nextLine();
+		while(newUser.length() < 1 || newUser.equals(" "))
+		{
+			System.out.println("Enter a new task: ");
+			newUser = scan.nextLine();
+		}
 		
 		System.out.println("Did you want to add a description about this task? (yes or no");
 		getAnswer = scan.nextLine();
@@ -311,11 +322,22 @@ public class ToDoApp
 			{
 				System.out.println("Who has to finish this task?: ");
 				updateUser = scan.nextLine();
+				while(updateUser.length() < 1 || updateUser.equals(" "))
+				{
+					System.out.println("Enter a new task: ");
+					updateUser = scan.nextLine();
+				}
+				
 			}
 			else if (isComplete == true)
 			{
 				System.out.println("Who finished this task?: ");
 				updateUser = scan.nextLine();
+				while(updateUser.length() < 1 || updateUser.equals(" "))
+				{
+					System.out.println("Enter a new task: ");
+					updateUser = scan.nextLine();
+				}
 			}
 			inProgress = false;
 		}
