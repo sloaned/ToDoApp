@@ -243,7 +243,7 @@ public class ToDoApp
 	{
 		getList();
 		
-		int rawInput = getInput();
+		int rawInput = getStringInput();
 		ArrayList<ToDoItem> toDo = toDoService.getAll();
 		
 		
@@ -260,7 +260,7 @@ public class ToDoApp
 	{
 		getList();
 		
-		int rawInput = getInput();
+		int rawInput = getStringInput();
 		ArrayList<ToDoItem> toDo = toDoService.getAll();
 		
 		
@@ -277,7 +277,7 @@ public class ToDoApp
 	{
 		getList();
 		
-		int rawInput = getInput();
+		int rawInput = getStringInput();
 		ArrayList<ToDoItem> toDo = toDoService.getAll();
 		
 		
