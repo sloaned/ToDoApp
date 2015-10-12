@@ -35,8 +35,9 @@ public class ToDoApp
 		System.out.println("7) Show me what I have left to do!");
 		System.out.println("8) Show me what I've done, I need a confidence boost...");
 		System.out.println("9) Show me what's past due.");
+		System.out.println("11) Show me who has to do what.");
 		System.out.println("");
-		System.out.println("10) Ok, I'm finished here");
+		System.out.println("12) Ok, I'm finished here");
 		System.out.println("");
 	}
 			
@@ -219,6 +220,14 @@ public class ToDoApp
 		    }
 	}
 	
+	public void selectUserTasks()
+	{
+		System.out.println("Input the name of a user you want to find the tasks for: ");
+		String getName = scan.nextLine();
+		
+		toDoService.getUserTask(getName);
+	}
+	
 	public void removeListItem()
 	{
 		getList();
@@ -391,6 +400,8 @@ public class ToDoApp
 				
 			case 9:
 				showPastDue();
+			case 11:
+				selectUserTasks();
 			
 			default: 
 				break;

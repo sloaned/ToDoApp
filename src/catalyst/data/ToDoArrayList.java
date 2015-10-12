@@ -77,5 +77,17 @@ public class ToDoArrayList implements ToDoData{
 		}
 		return pastDue;
 	}
+	@Override
+	public ArrayList<ToDoItem> getUserTask(String userName) {
+		ArrayList<ToDoItem> user = new ArrayList<ToDoItem>();
+		for(ToDoItem i : toDoList)
+		{
+			if(i.getAssignedUser() == userName)
+			{
+				user.add(i);
+			}
+		}
+		return user;
+	}
 	
 }

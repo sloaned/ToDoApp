@@ -57,4 +57,6 @@ public interface ToDoData {
 	ArrayList<ToDoItem> getIncompleteList();
 	
 	ArrayList<ToDoItem> getPastDue();
+
+	ArrayList<ToDoItem> getUserTask(String userName);
 }
