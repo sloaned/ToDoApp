@@ -62,6 +62,8 @@ import java.util.Date;
 		void update(int choice, String task, boolean complete, boolean inProgress, String assignedUser, Date dueDate, String newDescription);
 
 		ArrayList<ToDoItem> getPastDue();
+		
+		ArrayList<ToDoItem> getInProgress();
 
 	}
 

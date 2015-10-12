@@ -35,8 +35,9 @@ public class ToDoApp
 		System.out.println("7) Show me what I have left to do!");
 		System.out.println("8) Show me what I've done, I need a confidence boost...");
 		System.out.println("9) Show me what's past due.");
+		System.out.println("10) Show me what is currently in progress.");
 		System.out.println("");
-		System.out.println("10) Ok, I'm finished here");
+		System.out.println("11) Ok, I'm finished here");
 		System.out.println("");
 	}
 			
@@ -88,6 +89,12 @@ public class ToDoApp
 	public void showPastDue()
 	{
 		ArrayList<ToDoItem> theList = toDoService.getPastDue();
+		showList(theList);
+	}
+	
+	public void showInProgress()
+	{
+		ArrayList<ToDoItem> theList = toDoService.getInProgress();
 		showList(theList);
 	}
 	
@@ -391,6 +398,9 @@ public class ToDoApp
 				
 			case 9:
 				showPastDue();
+				
+			case 10: 
+				showInProgress();
 			
 			default: 
 				break;
