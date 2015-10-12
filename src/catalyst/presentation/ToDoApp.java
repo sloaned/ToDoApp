@@ -20,7 +20,10 @@ public class ToDoApp
 	}
 	
 	public Scanner scan = new Scanner(System.in);
-
+	
+	/**
+	 * displays option menu to the user
+	 */
 	public void displayMenu()
 	{
 		System.out.println("");
@@ -41,7 +44,10 @@ public class ToDoApp
 		System.out.println("12) Ok, I'm finished here");
 		System.out.println("");
 	}
-
+	
+	/**
+	 * user enters new task to the to-do list
+	 */
 	public void getNewTask()
 	{
 		String newTask = null;
@@ -123,6 +129,9 @@ public class ToDoApp
 		
 	}
 	
+	/**
+	 * allows user to re-enter all info on a given task
+	 */
 	public void updateTask()
 	{
 		getList();
@@ -137,11 +146,11 @@ public class ToDoApp
 		String getAnswer = null;
 		
 		
-		System.out.println("Update the task: ");
+		System.out.println("Enter the new task name: ");
 		updateTask = scan.nextLine();
 		while(updateTask.trim().length() < 1)
 		{
-			System.out.println("Enter a new task: ");
+			System.out.println("Enter a new task name: ");
 			updateTask = scan.nextLine();
 		}
 		
@@ -226,6 +235,11 @@ public class ToDoApp
 		toDoService.update(userEntry, updateTask, isComplete, inProgress, updateUser, updateDate, updateDescription);
 	}
 	
+	/**
+	 * checks whether user input is a valid date
+	 * @param input
+	 * @return true if user input is valid date, false otherwise
+	 */
 	public boolean isDate(String input)
 	{
 		Date newDate = new Date ();
@@ -241,58 +255,58 @@ public class ToDoApp
 		      return false;
 		 }
 	}
-
+	
+	/**
+	 * validates that user input is a valid number from the to-do list and returns that number
+	 * @return
+	 */
+	public int getIndex()
+	{
+		getList();
+		int rawInput = getStringInput();
+		ArrayList<ToDoItem> toDo = toDoService.getAll();
+		
+		
+		while(rawInput > toDo.size() || rawInput < 0)
+		{
+			System.out.println("That is not an item in the list. Try again");
+			rawInput = getInput();
+		}
+		return rawInput;
+	}
+	
+	/**
+	 * user selects a task and it is removed from the to-do list
+	 */
 	public void removeListItem()
 	{
-		getList();
-		
-		int rawInput = getStringInput();
-		ArrayList<ToDoItem> toDo = toDoService.getAll();
-		
-		
-		while(rawInput > toDo.size() || rawInput < 0)
-		{
-			System.out.println("That is not an item in the list. Try again");
-			rawInput = getInput();
-		}
-		
-		toDoService.remove(rawInput);
+		int itemNumber = getIndex();
+		toDoService.remove(itemNumber);
 	}
 	
+	/**
+	 * user selects a task and it is marked complete
+	 */
 	public void markTaskComplete()
 	{
-		getList();
-		
-		int rawInput = getStringInput();
-		ArrayList<ToDoItem> toDo = toDoService.getAll();
-		
-		
-		while(rawInput > toDo.size() || rawInput < 0)
-		{
-			System.out.println("That is not an item in the list. Try again");
-			rawInput = getInput();
-		}
-		
-		toDoService.markComplete(rawInput);
+		int listNumber = getIndex();
+		toDoService.markComplete(listNumber);
 	}
 	
+	/**
+	 * user selects a task and it is marked incomplete
+	 */
 	public void markTaskIncomplete()
 	{
-		getList();
-		
-		int rawInput = getStringInput();
-		ArrayList<ToDoItem> toDo = toDoService.getAll();
-		
-		
-		while(rawInput > toDo.size() || rawInput < 0)
-		{
-			System.out.println("That is not an item in the list. Try again");
-			rawInput = getInput();
-		}
-		
-		toDoService.markIncomplete(rawInput);
+		int listNumber = getIndex();
+		toDoService.markIncomplete(listNumber);
 	}
 	
+	/**
+	 * checks whether user input is an integer
+	 * @param userInput
+	 * @return true if user input is integer, false otherwise
+	 */
 	public boolean isNumber(String userInput)
 	{
 		try
@@ -306,6 +320,11 @@ public class ToDoApp
 		}
 	}
 	
+	/**
+	 * allows user to enter either line number of task they want to select
+	 * or name of task they want to select
+	 * @return int (line number of task they selected)
+	 */
 	public int getStringInput()
 	{
 		boolean notValid = true;
@@ -345,12 +364,15 @@ public class ToDoApp
 					notValid = false;
 				}
 			}
-		}
-		
-		
+		}	
 		return userInput;
 	}
 	
+	
+	/**
+	 * gets integer from user to correspond with their menu choice
+	 * @return
+	 */
 	public int getInput()
 	{
 		boolean notValid = true;
@@ -377,6 +399,9 @@ public class ToDoApp
 		return entryChoice;		
 	}
 	
+	/**
+	 * prints the entire to-do list
+	 */
 	public void getList()
 	{
 		ArrayList<ToDoItem> theList = toDoService.getAll();
@@ -391,6 +416,9 @@ public class ToDoApp
 		}
 	}
 	
+	/**
+	 * prints list of incomplete tasks
+	 */
 	public void showLeftToDo()
 	{
 		ArrayList<ToDoItem> theList = toDoService.getIncomplete();
@@ -399,6 +427,9 @@ public class ToDoApp
 	
 	}
 	
+	/**
+	 * prints list of completed tasks
+	 */
 	public void showCompleted()
 	{	
 		ArrayList<ToDoItem> theList = toDoService.getComplete();
@@ -406,6 +437,9 @@ public class ToDoApp
 		showList(theList);
 	}
 	
+	/**
+	 * prints list of overdue tasks
+	 */
 	public void showPastDue()
 	{
 		ArrayList<ToDoItem> theList = toDoService.getPastDue();
@@ -413,6 +447,9 @@ public class ToDoApp
 		showList(theList);
 	}
 	
+	/**
+	 * prints list of tasks currently in progress
+	 */
 	public void showInProgress()
 	{
 		ArrayList<ToDoItem> theList = toDoService.getInProgress();
@@ -421,6 +458,9 @@ public class ToDoApp
 		
 	}
 	
+	/**
+	 * gets username from user and prints all tasks assigned to that username
+	 */
 	public void selectUserTasks()
 	{
 		getList();
@@ -432,6 +472,10 @@ public class ToDoApp
 		showList(theList);
 	}
 	
+	/**
+	 * prints out any given ArrayList of ToDoItem
+	 * @param theList
+	 */
 	public void showList(ArrayList<ToDoItem> theList)
 	{
 		int counter = 1;
@@ -472,6 +516,10 @@ public class ToDoApp
 	    System.out.println("End of list\n");
 	}
 
+	/**
+	 * switch statement called when user chooses a menu option
+	 * @param entryChoice
+	 */
 	public void userChoice(int entryChoice)
 	{
 		switch(entryChoice)
