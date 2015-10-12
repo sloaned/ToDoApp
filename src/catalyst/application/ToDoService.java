@@ -61,13 +61,32 @@ import java.util.Date;
 		 */
 		void update(int choice, String task, boolean complete, boolean inProgress, String assignedUser, Date dueDate, String newDescription);
 
+		/**
+		 * returns an ArrayList of all to-do items that are past their due date and incomplete
+		 * @return ArrayList of ToDoItem
+		 */
 		ArrayList<ToDoItem> getPastDue();
 		
+		/**
+		 * returns an ArrayList of all to-do items that are assigned to the given user
+		 * @return ArrayList of ToDoItem
+		 */
 		ArrayList<ToDoItem> getUserTask(String userName);
 
+		/**
+		 * returns an ArrayList of all to-do items that are in progress
+		 * @return ArrayList of ToDoItem
+		 */
 		ArrayList<ToDoItem> getInProgress();
 		
+		/**
+		 * checks whether a given task name is in the to-do list already
+		 * (used to enforce uniqueness)
+		 * @return true if task name is already in list, false otherwise
+		 */
 		boolean inList(String task);
+		
+		int getLineNumber(String task);
 
 	}
 
