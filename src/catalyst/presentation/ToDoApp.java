@@ -161,6 +161,13 @@ public class ToDoApp
 		if (rawInput.equals("yes")|| rawInput.equals("no"))
 		{
 			inProgress = true;
+			System.out.println("Who has to finish this task?: ");
+			updateUser = scan.nextLine();
+			while(updateUser.length() < 1 || updateUser.equals(" "))
+			{
+				System.out.println("Enter a new task: ");
+				updateUser = scan.nextLine();
+			}
 			
 		}
 		else if (rawInput.equals("no") || rawInput.equals("n"))
@@ -300,41 +307,42 @@ public class ToDoApp
 		boolean notValid = true;
 		int userInput = 0;
 		
-		System.out.println("Enter the title of a task: ");
-		do
+		System.out.println("Enter the title or number of a task: ");
+		
+		String rawEntry = scan.nextLine();
+		while(notValid)
 		{
-			String rawEntry = scan.nextLine();
-			while(notValid)
+			if(!isNumber(rawEntry))
 			{
-				if(!isNumber(rawEntry))
+				if(toDoService.inList(rawEntry))
 				{
-					if(toDoService.inList(rawEntry))
-					{
-						userInput = toDoService.getLineNumber(rawEntry);	
-						return userInput;
-					}
-					else
-					{
-						System.out.println("That is not a valid line number or task name. Try again.");
-					}
+					userInput = toDoService.getLineNumber(rawEntry);	
+					notValid = false;
 				}
 				else
 				{
-					userInput = Integer.parseInt(rawEntry);
-					ArrayList<ToDoItem> toDo = toDoService.getAll();
-				
-					if(userInput > toDo.size() || userInput < 0)
-					{
-						System.out.println("That is not an item in the list. Try again");	
-					}
-					else
-					{
-						return userInput;
-					}
+					System.out.println("That is not a valid line number or task name. Try again.");
+					rawEntry = scan.nextLine();
 				}
-				rawEntry = scan.nextLine();
 			}
-		}while (notValid);
+			else
+			{
+				userInput = Integer.parseInt(rawEntry);
+				ArrayList<ToDoItem> toDo = toDoService.getAll();
+				
+				if(userInput > toDo.size() || userInput < 0)
+				{
+					System.out.println("you entered " + userInput);
+					System.out.println("That is not an item in the list. Try again");
+					rawEntry = scan.nextLine();
+				}
+				else
+				{
+					notValid = false;
+				}
+			}
+		}
+		
 		
 		return userInput;
 	}
