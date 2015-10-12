@@ -109,11 +109,11 @@ public class ToDoApp
 		
 		System.out.println("Did you want to add a description about this task? (yes or no)");
 		getAnswer = scan.nextLine();
-		if(getAnswer == "no" || getAnswer == "n")
+		if(getAnswer.equals("no")|| getAnswer.equals("n"))
 		{
 			newDescription = null;
 		}
-		else if(getAnswer == "yes" || getAnswer == "y")
+		else if(getAnswer.equals("yes") || getAnswer.equals("y"))
 		{
 			System.out.println("Please enter a description: ");
 			newDescription = scan.nextLine();
@@ -158,7 +158,7 @@ public class ToDoApp
 	    System.out.println("Is this task in progress? (yes or no): ");
 		String rawInput = scan.nextLine();
 		
-		if (rawInput == "yes"|| rawInput == "y")
+		if (rawInput.equals("yes")|| rawInput.equals("no"))
 		{
 			inProgress = true;
 			
@@ -202,11 +202,11 @@ public class ToDoApp
 		}
 		System.out.println("Did you want to add a description about this task? (yes or no)");
 		getAnswer = scan.nextLine();
-		if(getAnswer == "no" || getAnswer == "n")
+		if(getAnswer.equals("no") || getAnswer.equals("n"))
 		{
 			updateDescription = null;
 		}
-		else if(getAnswer == "yes" || getAnswer == "y")
+		else if(getAnswer.equals("yes") || getAnswer.equals("y"))
 		{
 			System.out.println("Please enter a description: ");
 			updateDescription = scan.nextLine();
@@ -229,16 +229,6 @@ public class ToDoApp
 		    {
 		      return false;
 		    }
-	}
-	
-	public void selectUserTasks()
-	{
-		System.out.println("Input the name of a user you want to find the tasks for: ");
-		String getName = scan.nextLine();
-		
-		ArrayList<ToDoItem> theList = toDoService.getUserTask(getName);
-		showList(theList);
-		
 	}
 	
 	public void removeListItem()
@@ -451,7 +441,7 @@ public class ToDoApp
 			
 			System.out.println(counter + ")  "  + idx.getAssignedUser() + " needs to " + idx.getTask() + " and finish it by: " + dateString + "."); 
 			System.out.println( "\tIn progress? " + isInProgress);
-			
+			System.out.println( "\tDescription: " + idx.getDescription());
 			boolean complete = idx.isComplete();
 			
 			if(complete == true)
