@@ -200,7 +200,7 @@ public class ToDoApp
 			}
 			inProgress = false;
 		}
-		System.out.println("Did you want to add a description about this task? (yes or no");
+		System.out.println("Did you want to add a description about this task? (yes or no)");
 		getAnswer = scan.nextLine();
 		if(getAnswer == "no" || getAnswer == "n")
 		{
@@ -312,7 +312,37 @@ public class ToDoApp
 		do
 		{
 			String rawEntry = scan.nextLine();
-			try 
+			while(notValid)
+			{
+				if(!isNumber(rawEntry))
+				{
+					if(toDoService.inList(rawEntry))
+					{
+						userInput = toDoService.getLineNumber(rawEntry);	
+						return userInput;
+					}
+					else
+					{
+						System.out.println("That is not a valid line number or task name. Try again.");
+					}
+				}
+				else
+				{
+					userInput = Integer.parseInt(rawEntry);
+					ArrayList<ToDoItem> toDo = toDoService.getAll();
+				
+					if(userInput > toDo.size() || userInput < 0)
+					{
+						System.out.println("That is not an item in the list. Try again");	
+					}
+					else
+					{
+						return userInput;
+					}
+				}
+				rawEntry = scan.nextLine();
+			}
+			/*try 
             {
 				if(!isNumber(rawEntry))
 				{
@@ -335,7 +365,7 @@ public class ToDoApp
             catch (Exception e) 
             {
                 System.out.println("Invalid input.  Try again.");
-            }
+            }*/
 		}while (notValid);
 		
 		return userInput;

@@ -86,6 +86,12 @@ import java.util.Date;
 		 */
 		boolean inList(String task);
 		
+		/**
+		 * gets index of given task, subtracted by one
+		 * (used to get line number of user display)
+		 * @param task
+		 * @return int line number
+		 */
 		int getLineNumber(String task);
 
 	}

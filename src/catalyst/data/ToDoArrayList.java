@@ -122,7 +122,7 @@ public class ToDoArrayList implements ToDoData{
 		{
 			if((toDoList.get(i).getTask().equals(taskName)))
 			{
-				lineNumber = i+1;
+				lineNumber = i-1;
 				found = true;
 			}
 		}
