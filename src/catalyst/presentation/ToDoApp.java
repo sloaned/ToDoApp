@@ -158,7 +158,7 @@ public class ToDoApp
 	    System.out.println("Is this task in progress? (yes or no): ");
 		String rawInput = scan.nextLine();
 		
-		if (rawInput.equals("yes")|| rawInput.equals("no"))
+		if (rawInput.equals("yes")|| rawInput.equals("y"))
 		{
 			inProgress = true;
 			System.out.println("Who has to finish this task?: ");
@@ -170,7 +170,7 @@ public class ToDoApp
 			}
 			
 		}
-		else if (rawInput.equals("no") || rawInput.equals("n"))
+		else
 		{
 			System.out.println("Is this task complete?");
 			String nextRawInput = scan.nextLine();
