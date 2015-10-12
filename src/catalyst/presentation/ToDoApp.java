@@ -158,6 +158,8 @@ public class ToDoApp
 		boolean inProgress = false;
 		String newUser = null;
 		String rawInput = null;
+		String getAnswer = null;
+		String newDescription = null;
 		
 		
 		System.out.println("Enter a new task: ");
@@ -188,9 +190,6 @@ public class ToDoApp
 	    {
 	      e.printStackTrace();
 	    }
-	   
-	    
-	   
 		
 	    System.out.println("Is this task in progress? (yes or no): ");
 		rawInput = scan.nextLine();
@@ -206,7 +205,19 @@ public class ToDoApp
 		System.out.println("Who has to finish this task?: ");
 		newUser = scan.nextLine();
 		
-		toDoService.add(newTask, inProgress, newUser, newDate);
+		System.out.println("Did you want to add a description about this task? (yes or no");
+		getAnswer = scan.nextLine();
+		if(getAnswer == "no" || getAnswer == "n")
+		{
+			newDescription = null;
+		}
+		else if(getAnswer == "yes" || getAnswer == "y")
+		{
+			System.out.println("Please enter a description: ");
+			newDescription = scan.nextLine();
+		}
+		
+		toDoService.add(newTask, inProgress, newUser, newDate, newDescription);
 		
 		//scan.close();
 	}
@@ -256,6 +267,8 @@ public class ToDoApp
 		String updateUser = null;
 		//String updateInput = null;
 		boolean isComplete = false;
+		String updateDescription = null;
+		String getAnswer = null;
 		
 		
 		System.out.println("Update the task: ");
@@ -310,8 +323,19 @@ public class ToDoApp
 			}
 			inProgress = false;
 		}
+		System.out.println("Did you want to add a description about this task? (yes or no");
+		getAnswer = scan.nextLine();
+		if(getAnswer == "no" || getAnswer == "n")
+		{
+			updateDescription = null;
+		}
+		else if(getAnswer == "yes" || getAnswer == "y")
+		{
+			System.out.println("Please enter a description: ");
+			updateDescription = scan.nextLine();
+		}
 		
-		toDoService.update(userEntry, updateTask, isComplete, inProgress, updateUser, updateDate);
+		toDoService.update(userEntry, updateTask, isComplete, inProgress, updateUser, updateDate, updateDescription);
 	}
 	
 	public void markTaskComplete()

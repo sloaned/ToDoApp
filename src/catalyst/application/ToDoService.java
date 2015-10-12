@@ -12,7 +12,7 @@ import java.util.Date;
 		 * @param assignedUser
 		 * @param dueDate
 		 */
-		void add(String task, boolean inProgress, String assignedUser, Date dueDate);
+		void add(String task, boolean inProgress, String assignedUser, Date dueDate, String newDescription);
 		
 		/**
 		 * removes the item from the to-do list at the given index
@@ -59,7 +59,7 @@ import java.util.Date;
 		 * @param assignedUser
 		 * @param dueDate
 		 */
-		void update(int choice, String task, boolean complete, boolean inProgress, String assignedUser, Date dueDate);
+		void update(int choice, String task, boolean complete, boolean inProgress, String assignedUser, Date dueDate, String newDescription);
 	}
 
 

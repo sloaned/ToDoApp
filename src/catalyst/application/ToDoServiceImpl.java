@@ -17,8 +17,8 @@ public class ToDoServiceImpl implements ToDoService {
 		this.toDoData = toDoData;
 	}
 
-	public void add(String task, boolean inProgress, String assignedUser, Date dueDate){
-		ToDoItem item = new ToDoItem(task, false, inProgress, assignedUser, dueDate);
+	public void add(String task, boolean inProgress, String assignedUser, Date dueDate, String newDescription){
+		ToDoItem item = new ToDoItem(task, false, inProgress, assignedUser, dueDate, newDescription);
 		toDoData.addToToDoList(item);
 	}
 	
@@ -58,9 +58,9 @@ public class ToDoServiceImpl implements ToDoService {
 	}
 
 	@Override
-	public void update(int choice, String task, boolean complete, boolean inProgress, String assignedUser, Date dueDate) {
+	public void update(int choice, String task, boolean complete, boolean inProgress, String assignedUser, Date dueDate, String newDescription) {
 		choice--;
-		ToDoItem item = new ToDoItem(task, complete, inProgress, assignedUser, dueDate);
+		ToDoItem item = new ToDoItem(task, complete, inProgress, assignedUser, dueDate, newDescription);
 		toDoData.updateToDoList(choice, item);
 		
 	}

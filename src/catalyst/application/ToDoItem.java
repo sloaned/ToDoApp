@@ -8,14 +8,16 @@ public class ToDoItem {
 	private boolean inProgress;
 	private String assignedUser;
 	private Date dueDate;
+	private String newDescription;
 	
 	
-	public ToDoItem(String task, boolean complete, boolean inProgress, String assignedUser, Date dueDate){
+	public ToDoItem(String task, boolean complete, boolean inProgress, String assignedUser, Date dueDate, String newDescription){
 		this.task = task;
 		this.complete = complete;
 		this.inProgress = inProgress;
 		this.assignedUser = assignedUser;
 		this.dueDate = dueDate;
+		this.newDescription = newDescription;
 	}
 	
 	public String getTask() {
