@@ -8,16 +8,16 @@ public class ToDoItem {
 	private boolean inProgress;
 	private String assignedUser;
 	private Date dueDate;
-	private String newDescription;
+	private String description;
 	
 	
-	public ToDoItem(String task, boolean complete, boolean inProgress, String assignedUser, Date dueDate, String newDescription){
+	public ToDoItem(String task, boolean complete, boolean inProgress, String assignedUser, Date dueDate, String description){
 		this.task = task;
 		this.complete = complete;
 		this.inProgress = inProgress;
 		this.assignedUser = assignedUser;
 		this.dueDate = dueDate;
-		this.newDescription = newDescription;
+		this.description = description;
 	}
 	
 	public String getTask() {
@@ -26,6 +26,14 @@ public class ToDoItem {
 	public void setTask(String task) {
 		this.task = task;
 	}
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public boolean isComplete() {
 		return complete;
 	}

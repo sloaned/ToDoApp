@@ -23,6 +23,7 @@ public class Main {
 			 toDoApp.displayMenu();
 			 userInput = toDoApp.getInput();
 		     toDoApp.userChoice(userInput);
+		     
 		}while (userInput != 12);
 		
 		toDoApp.scan.close();
