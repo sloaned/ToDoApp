@@ -85,6 +85,8 @@ import java.util.Date;
 		 * @return true if task name is already in list, false otherwise
 		 */
 		boolean inList(String task);
+		
+		int getLineNumber(String task);
 
 	}
 

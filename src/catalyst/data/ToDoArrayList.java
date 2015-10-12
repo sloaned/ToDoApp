@@ -114,4 +114,19 @@ public class ToDoArrayList implements ToDoData{
 		return false;
 	}
 	
+	public int getLineNumber(String taskName)
+	{
+		int lineNumber = 0;
+		boolean found = false;
+		for(int i = 0; i < toDoList.size() && !found; i++)
+		{
+			if((toDoList.get(i).getTask().equals(taskName)))
+			{
+				lineNumber = i+1;
+				found = true;
+			}
+		}
+		return lineNumber;
+	}
+	
 }

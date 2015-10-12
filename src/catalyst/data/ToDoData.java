@@ -80,4 +80,6 @@ public interface ToDoData {
 	 * @return true if task name is already in list, false otherwise
 	 */
 	boolean inList(String taskName);
+	
+	int getLineNumber(String taskName);
 }

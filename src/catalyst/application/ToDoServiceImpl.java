@@ -82,4 +82,9 @@ public class ToDoServiceImpl implements ToDoService {
 		toDoData.updateToDoList(choice, item);
 		
 	}
+	
+	public int getLineNumber(String task)
+	{
+		return toDoData.getLineNumber(task);
+	}
 }
