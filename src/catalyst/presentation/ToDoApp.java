@@ -221,25 +221,16 @@ public class ToDoApp
 		String pattern = "MM/dd/yyyy";
 	    SimpleDateFormat format = new SimpleDateFormat(pattern);
 		 try 
-		    {
+		 {
 		      newDate = format.parse(input);
 		      return true;
-		    } 
-		    catch (ParseException e) 
-		    {
+		 } 
+		 catch (ParseException e) 
+		 {
 		      return false;
-		    }
+		 }
 	}
 	
-	public void selectUserTasks()
-	{
-		System.out.println("Input the name of a user you want to find the tasks for: ");
-		String getName = scan.nextLine();
-		
-		ArrayList<ToDoItem> theList = toDoService.getUserTask(getName);
-		showList(theList);
-		
-	}
 	
 	public void removeListItem()
 	{
@@ -392,6 +383,7 @@ public class ToDoApp
 	public void showLeftToDo()
 	{
 		ArrayList<ToDoItem> theList = toDoService.getIncomplete();
+		System.out.println("The following tasks are incomplete!:");
 		showList(theList);
 	
 	}
@@ -399,19 +391,23 @@ public class ToDoApp
 	public void showCompleted()
 	{	
 		ArrayList<ToDoItem> theList = toDoService.getComplete();
+		System.out.println("The following tasks are completed:");
 		showList(theList);
 	}
 	
 	public void showPastDue()
 	{
 		ArrayList<ToDoItem> theList = toDoService.getPastDue();
+		System.out.println("The following tasks are past their due date!");
 		showList(theList);
 	}
 	
 	public void showInProgress()
 	{
 		ArrayList<ToDoItem> theList = toDoService.getInProgress();
+		System.out.println("The following tasks are in progress:");
 		showList(theList);
+		
 	}
 	
 	public void selectUserTasks()
@@ -421,6 +417,7 @@ public class ToDoApp
 		String getName = scan.nextLine();
 		
 		ArrayList<ToDoItem> theList = toDoService.getUserTask(getName);
+		System.out.println("The following tasks are assigned to " + getName + ":");
 		showList(theList);
 	}
 	
@@ -461,6 +458,7 @@ public class ToDoApp
 			
 			counter++;
 		}
+	    System.out.println("End of list\n");
 	}
 
 	public void userChoice(int entryChoice)
@@ -501,12 +499,15 @@ public class ToDoApp
 				
 			case 9:
 				showPastDue();
+				break;
 			
 			case 10: 
 				showInProgress();
+				break;
 
 			case 11:
 				selectUserTasks();
+				break;
 			
 			default: 
 				break;
