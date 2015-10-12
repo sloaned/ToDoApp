@@ -1,5 +1,6 @@
 package catalyst.data;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -17,8 +18,6 @@ public class ToDoArrayList implements ToDoData{
 	@Override
 	public void addToToDoList(ToDoItem item) {
 		toDoList.add(item);	
-		Date date = item.getDueDate();
-		//System.out.println("number of items in to-do list now = " + toDoList.size());
 	}
 
 	@Override
@@ -64,6 +63,19 @@ public class ToDoArrayList implements ToDoData{
 	@Override
 	public void updateToDoList(int index, ToDoItem item) {
 		toDoList.set(index, item);	
+	}
+	
+	public ArrayList<ToDoItem> getPastDue(){
+		ArrayList<ToDoItem> pastDue = new ArrayList<ToDoItem>();
+		for(ToDoItem i : toDoList)
+		{
+			Date date = new Date();
+			if(i.isComplete() == false && i.getDueDate().before(date))
+			{
+				pastDue.add(i);
+			}
+		}
+		return pastDue;
 	}
 	
 }

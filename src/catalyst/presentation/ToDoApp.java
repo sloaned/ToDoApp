@@ -34,8 +34,9 @@ public class ToDoApp
 		System.out.println("6) Just kidding, I didn't finish something...");
 		System.out.println("7) Show me what I have left to do!");
 		System.out.println("8) Show me what I've done, I need a confidence boost...");
+		System.out.println("9) Show me what's past due.");
 		System.out.println("");
-		System.out.println("9) Ok, I'm finished here");
+		System.out.println("10) Ok, I'm finished here");
 		System.out.println("");
 	}
 			
@@ -65,55 +66,34 @@ public class ToDoApp
 		return entryChoice;		
 	}
 	
+	public void getList()
+	{
+		ArrayList<ToDoItem> theList = toDoService.getAll();
+		showList(theList);
+	}
+	
 	public void showLeftToDo()
 	{
-		int counter = 1;
-
 		ArrayList<ToDoItem> theList = toDoService.getIncomplete();
-		
-		String dateString = "";
-		String pattern = "MM/dd/yyyy";
-	    SimpleDateFormat sdf = new SimpleDateFormat(pattern);
-	    Date date = new Date();
-	    for(ToDoItem idx : theList)
-		{
-
-			date = idx.getDueDate();
-			dateString = sdf.format(date);
-
-			String isInProgress = null;
-			boolean inProgress = idx.isInProgress();
-			if(inProgress == true)
-			{
-				isInProgress = "Yes";
-				
-			}
-			else if(inProgress == false)
-			{
-				isInProgress = "No";
-			}
-			
-			System.out.println(counter + ")  "  + idx.getAssignedUser() + " needs to " + idx.getTask() + " and finish it by: " + dateString + "."); 
-			System.out.println( "\tIn progress? " + isInProgress);
-			
-			boolean complete = idx.isComplete();
-			String isCompleted = null;
-			
-			if(complete == true)
-			{
-				System.out.println("\tThis task is finished!");
-			}
-			
-			counter++;
-		}
-		
+		showList(theList);
+	
 	}
 	
 	public void showCompleted()
+	{	
+		ArrayList<ToDoItem> theList = toDoService.getComplete();
+		showList(theList);
+	}
+	
+	public void showPastDue()
+	{
+		ArrayList<ToDoItem> theList = toDoService.getPastDue();
+		showList(theList);
+	}
+	
+	public void showList(ArrayList<ToDoItem> theList)
 	{
 		int counter = 1;
-
-		ArrayList<ToDoItem> theList = toDoService.getComplete();
 		String dateString = "";
 		String pattern = "MM/dd/yyyy";
 	    SimpleDateFormat sdf = new SimpleDateFormat(pattern);
@@ -140,7 +120,6 @@ public class ToDoApp
 			System.out.println( "\tIn progress? " + isInProgress);
 			
 			boolean complete = idx.isComplete();
-			String isCompleted = null;
 			
 			if(complete == true)
 			{
@@ -150,6 +129,7 @@ public class ToDoApp
 			counter++;
 		}
 	}
+
 	
 	public void getNewTask()
 	{
@@ -372,49 +352,7 @@ public class ToDoApp
 		toDoService.markIncomplete(rawInput);
 	}
 	
-	public void getList()
-	{
-		int counter = 1;
 
-		ArrayList<ToDoItem> theList = toDoService.getAll();
-		
-		String dateString = "";
-		String pattern = "MM/dd/yyyy";
-	    SimpleDateFormat sdf = new SimpleDateFormat(pattern);
-	    Date date = new Date();
-		for(ToDoItem idx : theList)
-		{
-
-			date = idx.getDueDate();
-			dateString = sdf.format(date);
-
-			String isInProgress = null;
-			boolean inProgress = idx.isInProgress();
-			if(inProgress == true)
-			{
-				isInProgress = "Yes";
-				
-			}
-			else if(inProgress == false)
-			{
-				isInProgress = "No";
-			}
-			
-			System.out.println(counter + ")  "  + idx.getAssignedUser() + " needs to " + idx.getTask() + " and finish it by: " + dateString + "."); 
-			System.out.println( "\tIn progress? " + isInProgress);
-			
-			boolean complete = idx.isComplete();
-			String isCompleted = null;
-			
-			if(complete == true)
-			{
-				System.out.println("\tThis task is finished!");
-			}
-			
-			counter++;
-		}
-	}
-	
 	public void userChoice(int entryChoice)
 	{
 		switch(entryChoice)
@@ -450,6 +388,9 @@ public class ToDoApp
 			case 8:
 				showCompleted();
 				break;
+				
+			case 9:
+				showPastDue();
 			
 			default: 
 				break;
