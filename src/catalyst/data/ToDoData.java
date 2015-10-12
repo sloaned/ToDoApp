@@ -59,4 +59,6 @@ public interface ToDoData {
 	ArrayList<ToDoItem> getPastDue();
 
 	ArrayList<ToDoItem> getUserTask(String userName);
+	
+	ArrayList<ToDoItem> getInProgress();
 }

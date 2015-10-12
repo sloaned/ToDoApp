@@ -90,4 +90,16 @@ public class ToDoArrayList implements ToDoData{
 		return user;
 	}
 	
+	public ArrayList<ToDoItem> getInProgress(){
+		ArrayList<ToDoItem> inProgressList = new ArrayList<ToDoItem>();
+		for(ToDoItem i: toDoList)
+		{
+			if(i.isInProgress())
+			{
+				inProgressList.add(i);
+			}
+		}
+		return inProgressList;
+	}
+	
 }

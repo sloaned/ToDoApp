@@ -65,6 +65,8 @@ import java.util.Date;
 		
 		ArrayList<ToDoItem> getUserTask(String userName);
 
+		ArrayList<ToDoItem> getInProgress();
+
 	}
 
 
