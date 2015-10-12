@@ -231,14 +231,6 @@ public class ToDoApp
 		    }
 	}
 	
-	public void selectUserTasks()
-	{
-		System.out.println("Input the name of a user you want to find the tasks for: ");
-		String getName = scan.nextLine();
-		
-		toDoService.getUserTask(getName);
-	}
-	
 	public void removeListItem()
 	{
 		getList();
@@ -376,7 +368,15 @@ public class ToDoApp
 	public void getList()
 	{
 		ArrayList<ToDoItem> theList = toDoService.getAll();
-		showList(theList);
+	
+		if(theList.size() <= 0)
+		{
+			System.out.println("There are no tasks in your list yet!");
+		}
+		else
+		{
+			showList(theList);
+		}
 	}
 	
 	public void showLeftToDo()
@@ -401,6 +401,16 @@ public class ToDoApp
 	public void showInProgress()
 	{
 		ArrayList<ToDoItem> theList = toDoService.getInProgress();
+		showList(theList);
+	}
+	
+	public void selectUserTasks()
+	{
+		getList();
+		System.out.println("Input the name of a user you want to find the tasks for: ");
+		String getName = scan.nextLine();
+		
+		ArrayList<ToDoItem> theList = toDoService.getUserTask(getName);
 		showList(theList);
 	}
 	
