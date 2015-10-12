@@ -67,7 +67,6 @@ public class ToDoArrayList implements ToDoData{
 	public ArrayList<ToDoItem> getPastDue(){
 		ArrayList<ToDoItem> pastDue = new ArrayList<ToDoItem>();
 		Date date = new Date();
-		System.out.println("date = " + date);
 		for(ToDoItem i : toDoList)
 		{
 			if(i.isComplete() == false && i.getDueDate().before(date))
