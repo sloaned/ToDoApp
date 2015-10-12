@@ -102,4 +102,16 @@ public class ToDoArrayList implements ToDoData{
 		return inProgressList;
 	}
 	
+	public boolean inList(String taskName)
+	{
+		for(ToDoItem i: toDoList)
+		{
+			if((i.getTask()).equals(taskName))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	
 }

@@ -69,6 +69,11 @@ public class ToDoServiceImpl implements ToDoService {
 	public ArrayList<ToDoItem> getInProgress(){
 		return toDoData.getInProgress();
 	}
+	
+	public boolean inList(String task)
+	{
+		return toDoData.inList(task);
+	}
 
 	@Override
 	public void update(int choice, String task, boolean complete, boolean inProgress, String assignedUser, Date dueDate, String newDescription) {
