@@ -60,6 +60,9 @@ import java.util.Date;
 		 * @param dueDate
 		 */
 		void update(int choice, String task, boolean complete, boolean inProgress, String assignedUser, Date dueDate);
+	
+		
+		ArrayList<ToDoItem> getPastDue();
 	}
 
 

@@ -56,6 +56,10 @@ public class ToDoServiceImpl implements ToDoService {
 	public ArrayList<ToDoItem> getIncomplete() {
 		return toDoData.getIncompleteList();
 	}
+	
+	public ArrayList<ToDoItem> getPastDue(){
+		return toDoData.getPastDue();
+	}
 
 	@Override
 	public void update(int choice, String task, boolean complete, boolean inProgress, String assignedUser, Date dueDate) {

@@ -55,4 +55,6 @@ public interface ToDoData {
 	 * @return ArrayList of ToDoItem
 	 */
 	ArrayList<ToDoItem> getIncompleteList();
+	
+	ArrayList<ToDoItem> getPastDue();
 }
