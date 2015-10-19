@@ -28,9 +28,9 @@ public class HomeController {
 		return "/todo-index.html";
 	}
 	
-	@RequestMapping(value = "/todo/delete", method = RequestMethod.GET)
+	@RequestMapping(value = "/todo/remove", method = RequestMethod.GET)
 	public String delete(){
-		return "/todo-delete.html";
+		return "/todo-remove.html";
 	}
 
 }
