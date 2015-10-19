@@ -1,0 +1,214 @@
+h1{
+	font-family: Satisfy, cursive;
+	font-weight:normal;
+	font-size:50px;
+	padding-top: 60px;
+	text-align: center;
+}
+
+/* HOME PAGE */
+.container{
+	position:relative;
+	text-align:center;
+	padding:20px 0;
+	width:680px;
+	height: 100px;
+	margin: 0 auto;
+	border-radius:6px;
+
+}
+.container::before{
+	display: block;
+	font-size:20px;
+	font-weight:bold;
+	text-align:center;
+	padding:15px;
+}
+.container span{
+	display:inline-block;
+	padding:5px 9px;
+	background-color:#670EB5;
+	color:#186C72;
+	border-radius:4px;
+	margin:3px;
+	cursor:default;
+}
+.container a{
+	text-decoration: none;
+	color: white;
+}
+.container span::before{
+	position:absolute;
+	bottom:0;
+	left:0;
+	width:100%;
+	content:attr(data-title);
+	color:#666;
+
+	opacity:0;
+
+	/* Animate the transitions */
+	-webkit-transition:opacity 0.4s;
+	transition:opacity 0.4s;
+}
+.container span:hover::before{
+	opacity:2;
+}
+/*TO DO INDEX */
+.datagrid table { 
+	border-collapse: collapse; 
+	text-align: left; 
+	width: 100%; 
+} 
+.datagrid {
+	font: normal 12px/150% Arial, Helvetica, sans-serif; 
+	background: #fff; 
+	overflow: hidden; 
+	border: 1px solid #000000; 
+	-webkit-border-radius: 3px; 
+	-moz-border-radius: 3px; 
+	border-radius: 3px; 
+}
+.datagrid table td, .datagrid table th { 
+	padding: 3px 10px; 
+}
+.datagrid table thead th {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #670EB5), color-stop(1, #670EB5) );
+	background:-moz-linear-gradient( center top, #670EB5 5%, #670EB5 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#670EB5', endColorstr='#670EB5');
+	background-color:#670EB5; 
+	color:#F8E0FF; 
+	font-size: 15px; 
+	font-weight: bold; 
+	border-left: 2px solid #7D7D7D; 
+} 
+.datagrid table thead th:first-child { 
+	border: none; 
+}
+.datagrid table tbody td { 
+	color: #6B38C2; 
+	border-left: 1px solid #D8ADF4;
+	font-size: 12px;
+	font-weight: normal; 
+}
+.datagrid table tbody .alt td { 
+	background: #E8C8F4; 
+	color: #370F6B; 
+}
+.datagrid table tbody td:first-child { 
+	border-left: none; 
+	}
+.datagrid table tbody tr:last-child td { 
+	border-bottom: none; 
+}
+
+/* TO DO REMOVE */
+.remove{
+	position:relative;
+	text-align: center;
+	background: #670EB5;
+	background: -moz-linear-gradient(top,#670EB5 0%,#B84DFF 100%);
+	background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#670EB5),color-stop(100%,#B84DFF));
+	background: -webkit-linear-gradient(top,#670EB5 0%,#B84DFF 100%);
+	background: -o-linear-gradient(top,#670EB5 0%,#B84DFF 100%);
+	background: -ms-linear-gradient(top,#670EB5 0%,#B84DFF 100%);
+	background: linear-gradient(top,#670EB5 0%,#B84DFF 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#670EB5',endColorstr='#B84DFF',GradientType=0);
+	padding:8px 20px;
+	color:white;
+	font: normal 13px/150% Arial, Helvetica, sans-serif;
+	border-radius:40px;
+	-moz-border-radius:40px;
+	-webkit-border-radius:40px;
+	border:1px solid black;
+	margin-top: 20px;
+}
+
+/* TEXT BOXES */
+.textBoxes input[type="text"] {
+  padding: 10px;
+  border: solid 1px #EBD6FF;
+  transition: box-shadow 0.3s, border 0.3s;
+}
+.textBoxes input[type="text"]:focus,
+.textBoxes input[type="text"].focus {
+  border: solid 1px #707070;
+  box-shadow: 0 0 5px 1px #969696;
+}
+.textBoxes { 
+	margin-top: 20px;
+    box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
+    -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
+    -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
+}
+
+/* FORM STYLE */
+form{
+	text-align: center;
+	max-width: 400px;.
+	margin: 50px auto;
+	background: #fff;
+	border-radius: 2px;
+	padding: 20px;
+	font: normal 13px/150% Arial, Helvetica, sans-serif;
+}
+
+.textBoxes ul{
+    list-style:none;
+    padding: 0px;
+    margin:0;   
+}
+.textBoxes li{
+    display: block;
+    padding: 9px;
+    border:1px solid </center>;
+    margin-bottom: 30px;
+    border-radius: 3px;
+}
+.textBoxes li:last-child{
+    border:none;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.textBoxes li > label{
+    display: block;
+    float: left;
+    margin-top: -19px;
+    background: #FFFFFF;
+    height: 14px;
+    padding: 2px 5px 2px 5px;
+    color: #670EB5;
+    overflow: hidden;
+    font: normal 14px/150% Arial, Helvetica, sans-serif;
+}
+.textBoxes input[type="text"],
+.textBoxes select 
+{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    display: block;
+    outline: none;
+    border: none;
+    height: 25px;
+    line-height: 25px;
+    padding: 0;
+    font: normal 16px/150% Arial, Helvetica, sans-serif;
+}
+
+.textBoxes li > span{
+    background: #EBD6FF;
+    display: block;
+    padding: 3px;
+    margin: 10 -9px -9px -9px;
+    text-align: center;
+    color: #670EB5;
+    font: normal 11px/150% Arial, Helvetica, sans-serif;
+}
+
+.textBoxes input[type="submit"]:hover,
+.textBoxes input[type="button"]:hover{
+    background: #670EB5;
+    color:#EBD6FF;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title> Update a Task </title>
+	<link rel="stylesheet" type= "text/css" href="/static/css/ToDoStyleSheet.css" media="screen" />
+	<link href="http://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet" />
+</head>
+
+<header> 
+	<h1> Update a Task </h1> 
+</header>
+
+<body>
+	<center><form name = "taskGrab" method = "POST">
+		<div align = "center">
+			<select name = "dropDownMenu">
+				<option value = "Select a Task"> Select an Employee </option>
+			</select>
+		</div>
+		<div class = "textBoxes">
+		<ul>
+			<li>
+				<label> Assigned Person </label><br>
+  				<input type="text" name="firstName">
+  				<span> Enter their first name. </span>
+  				<br>
+  			</li>
+			<li>
+				<label> Task </label><br>
+				<input type="text" name="task">
+				<span> Enter the task. </span>
+				<br>
+			</li>
+			<li>
+				<label> Complete by Date </label><br>
+				<input type="text" name="completeDate">
+				<span> When does the task need to be finished? </span>
+				<br>
+			</li>
+			<li>
+				<label> Description? </label><br>
+				<input type="text" name="description">
+				<span> Description of the task. </span>
+				<br>
+			</li>
+			<li>
+				<label> In Progress? </label><br>
+				<input type="text" name="inProgress">
+				<span> Is this task currently being worked on? </span>
+				<br>
+			</li>
+		</ul>
+		</div>
+	</form></center>
+</body>
+</html>
