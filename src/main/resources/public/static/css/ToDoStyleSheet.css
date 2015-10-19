@@ -103,7 +103,7 @@ h1{
 }
 
 /* TO DO REMOVE */
-.remove{
+.removeBtn, .updateBtn, .createBtn{
 	position:relative;
 	text-align: center;
 	background: #670EB5;
