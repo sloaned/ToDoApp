@@ -3,9 +3,12 @@ package catalyst.data;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+
 import catalyst.application.ToDoItem;
 
-
+@Component
 public class ToDoArrayList implements ToDoData{
 	
 	ArrayList<ToDoItem> toDoList = new ArrayList<ToDoItem>();

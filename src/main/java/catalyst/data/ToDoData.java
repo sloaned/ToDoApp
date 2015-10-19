@@ -2,6 +2,8 @@ package catalyst.data;
 
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Repository;
+
 import catalyst.application.ToDoItem;
 
 public interface ToDoData {

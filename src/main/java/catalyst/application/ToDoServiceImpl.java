@@ -4,15 +4,17 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
-import com.catalyst.springboot.daos.EmployeeDao;
+import org.springframework.stereotype.Component;
 
 import catalyst.data.ToDoArrayList;
 import catalyst.data.ToDoData;
 
-public class ToDoServiceImpl implements ToDoService {
+@Component
+public class ToDoServiceImpl implements ToDoService 
+{
 
 	// Dependency to ToDoData
+	@Autowired
 	private ToDoData toDoData;
 	ToDoArrayList toDoArrayList = new ToDoArrayList();
 	

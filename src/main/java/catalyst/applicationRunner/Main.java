@@ -5,7 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import catalyst.application.ToDoServiceImpl;
 import catalyst.data.ToDoArrayList;
-import catalyst.presentation.ToDoApp;
 
 @SpringBootApplication
 public class Main {
