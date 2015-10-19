@@ -1,14 +1,20 @@
 package catalyst.applicationRunner;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+
 import catalyst.application.ToDoServiceImpl;
 import catalyst.data.ToDoArrayList;
 import catalyst.presentation.ToDoApp;
 
+@SpringBootApplication
 public class Main {
 
 	public static void main(String[] args) 
 	{
-		ToDoApp toDoApp = new ToDoApp();
+		SpringApplication.run(Main.class);
+		/*ToDoApp toDoApp = new ToDoApp();
 		ToDoArrayList toDoArrayList = new ToDoArrayList();
 		ToDoServiceImpl toDoService = new ToDoServiceImpl();
 		toDoApp.setToDoService(toDoService);
@@ -27,7 +33,7 @@ public class Main {
 		
 		toDoApp.scan.close();
 		System.out.println("\nGoodbye!");
-		System.exit(0);	
+		System.exit(0);	*/
 	}
 
 }
