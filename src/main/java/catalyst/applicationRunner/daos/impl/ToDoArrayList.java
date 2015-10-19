@@ -1,4 +1,4 @@
-package catalyst.data;
+package catalyst.applicationRunner.daos.impl;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -6,7 +6,8 @@ import java.util.Date;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
-import catalyst.application.ToDoItem;
+import catalyst.applicationRunner.daos.ToDoData;
+import catalyst.applicationRunner.entities.ToDoItem;
 
 @Component
 public class ToDoArrayList implements ToDoData{

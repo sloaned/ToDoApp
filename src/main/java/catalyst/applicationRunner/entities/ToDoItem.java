@@ -1,4 +1,4 @@
-package catalyst.application;
+package catalyst.applicationRunner.entities;
 
 import java.util.Date;
 

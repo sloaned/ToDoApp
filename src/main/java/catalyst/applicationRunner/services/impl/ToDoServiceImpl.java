@@ -1,17 +1,19 @@
-package catalyst.application;
+package catalyst.applicationRunner.services.impl;
 
 import java.util.ArrayList;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-import catalyst.data.ToDoArrayList;
-import catalyst.data.ToDoData;
+import catalyst.applicationRunner.daos.ToDoData;
+import catalyst.applicationRunner.daos.impl.ToDoArrayList;
+import catalyst.applicationRunner.entities.ToDoItem;
+import catalyst.applicationRunner.services.ToDoService;
 
-@Component
-public class ToDoServiceImpl implements ToDoService 
-{
+@Service
+public class ToDoServiceImpl implements ToDoService {
 
 	// Dependency to ToDoData
 	@Autowired

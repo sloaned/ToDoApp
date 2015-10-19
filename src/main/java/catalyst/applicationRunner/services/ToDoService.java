@@ -1,7 +1,12 @@
-package catalyst.application;
+package catalyst.applicationRunner.services;
 
 import java.util.ArrayList;
 import java.util.Date;
+
+import org.springframework.stereotype.Service;
+
+import catalyst.applicationRunner.entities.ToDoItem;
+
 
 	public interface ToDoService 
 	{
