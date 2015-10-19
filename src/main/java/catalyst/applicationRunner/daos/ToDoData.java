@@ -1,10 +1,10 @@
-package catalyst.data;
+package catalyst.applicationRunner.daos;
 
 import java.util.ArrayList;
 
 import org.springframework.stereotype.Repository;
 
-import catalyst.application.ToDoItem;
+import catalyst.applicationRunner.entities.ToDoItem;
 
 public interface ToDoData {
 	/**

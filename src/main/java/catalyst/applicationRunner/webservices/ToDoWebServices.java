@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import catalyst.application.ToDoItem;
-import catalyst.application.ToDoService;
+import catalyst.applicationRunner.entities.ToDoItem;
+import catalyst.applicationRunner.services.ToDoService;
 
 @RestController
 public class ToDoWebServices {

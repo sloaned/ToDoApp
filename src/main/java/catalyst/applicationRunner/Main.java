@@ -3,8 +3,8 @@ package catalyst.applicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import catalyst.application.ToDoServiceImpl;
-import catalyst.data.ToDoArrayList;
+import catalyst.applicationRunner.daos.impl.ToDoArrayList;
+import catalyst.applicationRunner.services.impl.ToDoServiceImpl;
 
 @SpringBootApplication
 public class Main {
