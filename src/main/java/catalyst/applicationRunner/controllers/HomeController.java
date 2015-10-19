@@ -11,5 +11,26 @@ public class HomeController {
 	public String home(){
 		return "/home.html";
 	}
+	
+	@RequestMapping(value = "/todo/update", method = RequestMethod.GET)
+	public String update(){
+		return "/todo-update.html";
+	}
+	
+	
+	@RequestMapping(value = "/todo/create", method = RequestMethod.GET)
+	public String create(){
+		return "/todo-create.html";
+	}
+	
+	@RequestMapping(value = "/todo/index", method = RequestMethod.GET)
+	public String index(){
+		return "/todo-index.html";
+	}
+	
+	@RequestMapping(value = "/todo/delete", method = RequestMethod.GET)
+	public String delete(){
+		return "/todo-delete.html";
+	}
 
 }
