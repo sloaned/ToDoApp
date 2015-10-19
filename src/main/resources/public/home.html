@@ -1,9 +1,22 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<header> I work! </header>
+	<title> To-Do List! </title>
+	<link rel="stylesheet" type= "text/css" href="/static/css/ToDoStyleSheet.css" media="all" />
+	<link href="http://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet" />
 </head>
 
+<header> 
+	<h1> To-Do List! </h1> 
+</header>
+
 <body>
+	<div class="container">
+	<span data-title="Let's see what I have to do today!"><a href = "/todo/index"> To-Do Index </a></span>
+	<span data-title="I need to add a new task!"><a href = "/todo/create">  Add Tasks </a></span>
+	<span data-title="I need to change some info..."><a href = "/todo/update"> Update Tasks </a></span>
+	<span data-title="Time to remove a task!"><a href = "/todo/delete"> Remove a Task </a></span>
+</div>
 </body>
 </html>
