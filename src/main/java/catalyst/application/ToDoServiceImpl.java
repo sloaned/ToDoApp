@@ -3,6 +3,10 @@ package catalyst.application;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.catalyst.springboot.daos.EmployeeDao;
+
 import catalyst.data.ToDoArrayList;
 import catalyst.data.ToDoData;
 
@@ -16,7 +20,8 @@ public class ToDoServiceImpl implements ToDoService {
 	{
 		this.toDoData = toDoData;
 	}
-
+	
+	
 	public void add(String task, boolean inProgress, String assignedUser, Date dueDate, String description){
 		ToDoItem item = new ToDoItem(task, false, inProgress, assignedUser, dueDate, description);
 		toDoData.addToToDoList(item);
