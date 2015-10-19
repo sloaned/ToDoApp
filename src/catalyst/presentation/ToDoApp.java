@@ -236,6 +236,24 @@ public class ToDoApp
 	}
 	
 	/**
+	 * checks whether user input is an integer
+	 * @param userInput
+	 * @return true if user input is integer, false otherwise
+	 */
+	public boolean isNumber(String userInput)
+	{
+		try
+		{
+			Integer.parseInt(userInput);
+			return true;
+		}
+		catch (Exception e)
+		{
+			return false;
+		}
+	}
+	
+	/**
 	 * checks whether user input is a valid date
 	 * @param input
 	 * @return true if user input is valid date, false otherwise
@@ -265,7 +283,6 @@ public class ToDoApp
 		getList();
 		int rawInput = getStringInput();
 		ArrayList<ToDoItem> toDo = toDoService.getAll();
-		
 		
 		while(rawInput > toDo.size() || rawInput < 0)
 		{
@@ -300,24 +317,6 @@ public class ToDoApp
 	{
 		int listNumber = getIndex();
 		toDoService.markIncomplete(listNumber);
-	}
-	
-	/**
-	 * checks whether user input is an integer
-	 * @param userInput
-	 * @return true if user input is integer, false otherwise
-	 */
-	public boolean isNumber(String userInput)
-	{
-		try
-		{
-			Integer.parseInt(userInput);
-			return true;
-		}
-		catch (Exception e)
-		{
-			return false;
-		}
 	}
 	
 	/**
