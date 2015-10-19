@@ -3,6 +3,8 @@ package catalyst.application;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.springframework.stereotype.Service;
+
 	public interface ToDoService 
 	{
 		/**

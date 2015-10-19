@@ -3,12 +3,18 @@ package catalyst.application;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import catalyst.data.ToDoArrayList;
 import catalyst.data.ToDoData;
 
+@Component
 public class ToDoServiceImpl implements ToDoService {
 
 	// Dependency to ToDoData
+	@Autowired
 	private ToDoData toDoData;
 	ToDoArrayList toDoArrayList = new ToDoArrayList();
 	
