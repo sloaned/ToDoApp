@@ -3,7 +3,6 @@ package catalyst.applicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
 import catalyst.application.ToDoServiceImpl;
 import catalyst.data.ToDoArrayList;
 import catalyst.presentation.ToDoApp;
