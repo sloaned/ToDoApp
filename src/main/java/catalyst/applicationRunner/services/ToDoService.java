@@ -17,7 +17,9 @@ import catalyst.applicationRunner.entities.ToDoItem;
 		 * @param assignedUser
 		 * @param dueDate
 		 */
-		void add(String task, boolean inProgress, String assignedUser, Date dueDate, String description);
+		//void add(String task, boolean inProgress, String assignedUser, Date dueDate, String description);
+		
+		void add(ToDoItem item);
 		
 		/**
 		 * removes the item from the to-do list at the given index

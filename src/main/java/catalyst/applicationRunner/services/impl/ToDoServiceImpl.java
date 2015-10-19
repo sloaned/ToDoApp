@@ -26,8 +26,9 @@ public class ToDoServiceImpl implements ToDoService {
 	}
 	
 	
-	public void add(String task, boolean inProgress, String assignedUser, Date dueDate, String description){
-		ToDoItem item = new ToDoItem(task, false, inProgress, assignedUser, dueDate, description);
+	//public void add(String task, boolean inProgress, String assignedUser, Date dueDate, String description){
+	public void add(ToDoItem item){
+		//ToDoItem item = new ToDoItem(task, false, inProgress, assignedUser, dueDate, description);
 		toDoData.addToToDoList(item);
 	}
 	

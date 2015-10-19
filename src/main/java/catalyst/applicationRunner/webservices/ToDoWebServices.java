@@ -25,8 +25,10 @@ public class ToDoWebServices {
 	}
 
 	@RequestMapping(value="/todo", method=RequestMethod.POST)
-	public void addItem(@RequestBody String task, boolean inProgress, String assignedUser, Date dueDate, String description){
-		toDoService.add(task, inProgress, assignedUser, dueDate, description);
+	public void addItem(@RequestBody ToDoItem item){
+	//public void addItem(@RequestBody String task, boolean inProgress, String assignedUser, Date dueDate, String description){
+		//toDoService.add(task, inProgress, assignedUser, dueDate, description);
+		toDoService.add(item);
 	} 
 		
 		
