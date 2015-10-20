@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	
-	//swiped from Stack Overflow
+	//taken from Stack Overflow
 	function isValidDate(dateString)
 	{
 	    // First check for the pattern
@@ -156,6 +156,22 @@ $(document).ready(function(){
 				}
 			}
 		});
+	});
+	
+	$("#updateComplete").click(function() {
+	    var $this = $(this);
+	    if($this.is(':checked')) 
+	    {
+	    	$("#updateInProgress").prop('checked', false);
+	    } 
+	});
+	
+	$("#updateInProgress").click(function(){
+		var $this = $(this);
+		if($this.is(':checked'))
+		{
+			$("#updateComplete").prop('checked', false);
+		}
 	});
 	
 	$("#updateSubmit").click(function(event){
