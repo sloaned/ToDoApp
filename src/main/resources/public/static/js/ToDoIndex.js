@@ -23,12 +23,13 @@ $(document).ready(function(){
 			var item;
 			var choice = $("#filterSelect").val();
 			$("#toDoTable tr").remove();
+			var filtered = [];
 			switch(choice)
 			{
-				case("All Statuses"):
+				case("All statuses"):
 					for(var i = 0; i < obj.length; i++){
 						item = obj[i];
-						$("#toDoTable").append('<tr><td>' + item.taskNum + '</td><td>' + item.assignedUser + '</td><td>' + item.task + '</td><td>' + item.dueDate + '</td><td>' + item.description + '</td><td>' + item.inProgress + '</td><td>' + item.complete + '</td></tr>');
+						filtered.push(item);
 					}
 					break;
 				case("Incomplete"):
@@ -36,7 +37,7 @@ $(document).ready(function(){
 						item = obj[i];
 						if(item.complete === false)
 						{
-							$("#toDoTable").append('<tr><td>' + item.taskNum + '</td><td>' + item.assignedUser + '</td><td>' + item.task + '</td><td>' + item.dueDate + '</td><td>' + item.description + '</td><td>' + item.inProgress + '</td><td>' + item.complete + '</td></tr>');
+							filtered.push(item);
 						}
 					}
 					break;
@@ -45,7 +46,7 @@ $(document).ready(function(){
 						item = obj[i];
 						if(item.complete === true)
 						{
-							$("#toDoTable").append('<tr><td>' + item.taskNum + '</td><td>' + item.assignedUser + '</td><td>' + item.task + '</td><td>' + item.dueDate + '</td><td>' + item.description + '</td><td>' + item.inProgress + '</td><td>' + item.complete + '</td></tr>');
+							filtered.push(item);
 						}
 					}
 					break;
@@ -54,7 +55,7 @@ $(document).ready(function(){
 						item = obj[i];
 						if(item.inProgress === true)
 						{
-							$("#toDoTable").append('<tr><td>' + item.taskNum + '</td><td>' + item.assignedUser + '</td><td>' + item.task + '</td><td>' + item.dueDate + '</td><td>' + item.description + '</td><td>' + item.inProgress + '</td><td>' + item.complete + '</td></tr>');
+							filtered.push(item);
 						}
 					}
 					break;
@@ -63,12 +64,32 @@ $(document).ready(function(){
 						item = obj[i];
 						if(item.inProgress === false)
 						{
-							$("#toDoTable").append('<tr><td>' + item.taskNum + '</td><td>' + item.assignedUser + '</td><td>' + item.task + '</td><td>' + item.dueDate + '</td><td>' + item.description + '</td><td>' + item.inProgress + '</td><td>' + item.complete + '</td></tr>');
+							filtered.push(item);
 						}
 					}
 					break;
 				default:
 					break;
+			}
+			if($("#nameFilter").val() != "")
+			{
+				var name = $("#nameFilter").val();
+				for(var i = 0; i < filtered.length; i++)
+				{
+					item = filtered[i];
+					if(item.assignedUser === name)
+					{
+						$("#toDoTable").append('<tr><td>' + item.taskNum + '</td><td>' + item.assignedUser + '</td><td>' + item.task + '</td><td>' + item.dueDate + '</td><td>' + item.description + '</td><td>' + item.inProgress + '</td><td>' + item.complete + '</td></tr>');
+					}
+				}
+			}
+			else
+			{
+				for(var i = 0; i < filtered.length; i++)
+				{
+					item = filtered[i];
+					$("#toDoTable").append('<tr><td>' + item.taskNum + '</td><td>' + item.assignedUser + '</td><td>' + item.task + '</td><td>' + item.dueDate + '</td><td>' + item.description + '</td><td>' + item.inProgress + '</td><td>' + item.complete + '</td></tr>');	
+				}
 			}
 			
 		});
