@@ -26,9 +26,7 @@ public class ToDoWebServices {
 
 	@RequestMapping(value="/todo", method=RequestMethod.POST)
 	public void addItem(@RequestBody ToDoItem item){
-	//public void addItem(@RequestBody String task, boolean inProgress, String assignedUser, Date dueDate, String description){
-		//toDoService.add(task, inProgress, assignedUser, dueDate, description);
-		toDoService.add(item);
+		toDoService.add(item.getTask(), item.getInProgress(), item.getAssignedUser(), item.getDueDate(), item.getDescription());
 	} 
 		
 		
@@ -45,8 +43,9 @@ public class ToDoWebServices {
 	}*/
 	
 	@RequestMapping(value="/todo/{id}", method = RequestMethod.PUT)
-	public void updateToDoList(@PathVariable Integer id, @RequestBody String task, boolean complete, boolean inProgress, String assignedUser, Date dueDate, String description){
-		toDoService.update(id, task, complete, inProgress, assignedUser, dueDate, description);
+	//public void updateToDoList(@PathVariable Integer id, @RequestBody String task, boolean complete, boolean inProgress, String assignedUser, Date dueDate, String description){
+	public void updateToDoList(@PathVariable Integer id, @RequestBody ToDoItem item){
+		toDoService.update(id, item.getTask(), item.getComplete(), item.getInProgress(), item.getAssignedUser(), item.getDueDate(), item.getDescription());
 	}
 	
 	@RequestMapping(value="/todo/{id}", method = RequestMethod.DELETE)

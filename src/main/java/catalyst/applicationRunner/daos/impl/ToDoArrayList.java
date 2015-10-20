@@ -9,9 +9,11 @@ import org.springframework.stereotype.Repository;
 import catalyst.applicationRunner.daos.ToDoData;
 import catalyst.applicationRunner.entities.ToDoItem;
 
+
 @Component
 public class ToDoArrayList implements ToDoData{
 	
+	private int counter = 0;
 	ArrayList<ToDoItem> toDoList = new ArrayList<ToDoItem>();
 	@Override
 	public ArrayList<ToDoItem> getToDoList() {
@@ -21,6 +23,8 @@ public class ToDoArrayList implements ToDoData{
 
 	@Override
 	public void addToToDoList(ToDoItem item) {
+		counter++;
+		item.setTaskNum(counter);
 		toDoList.add(item);	
 	}
 
@@ -43,7 +47,7 @@ public class ToDoArrayList implements ToDoData{
 		ArrayList<ToDoItem> complete = new ArrayList<ToDoItem>();
 		for(ToDoItem i : toDoList)
 		{
-			if(i.isComplete() == true)
+			if(i.getComplete() == true)
 			{
 				complete.add(i);
 			}
@@ -56,7 +60,7 @@ public class ToDoArrayList implements ToDoData{
 		ArrayList<ToDoItem> incomplete = new ArrayList<ToDoItem>();
 		for(ToDoItem i : toDoList)
 		{
-			if(i.isComplete() == false)
+			if(i.getComplete() == false)
 			{
 				incomplete.add(i);
 			}
@@ -74,7 +78,7 @@ public class ToDoArrayList implements ToDoData{
 		Date date = new Date();
 		for(ToDoItem i : toDoList)
 		{
-			if(i.isComplete() == false && i.getDueDate().before(date))
+			if(i.getComplete() == false && i.getDueDate().before(date))
 			{
 				pastDue.add(i);
 			}
@@ -98,7 +102,7 @@ public class ToDoArrayList implements ToDoData{
 		ArrayList<ToDoItem> inProgressList = new ArrayList<ToDoItem>();
 		for(ToDoItem i: toDoList)
 		{
-			if(i.isInProgress())
+			if(i.getInProgress())
 			{
 				inProgressList.add(i);
 			}

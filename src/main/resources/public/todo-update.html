@@ -6,10 +6,10 @@
 	<title> Update a Task </title>
 	<link rel="stylesheet" type= "text/css" href="/static/css/ToDoStyleSheet.css" media="screen" />
 	<link href="http://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet" />
-	<script src="/static/js/ToDoJavaScript.js"></script>
 	<script type='text/javascript' src='//code.jquery.com/jquery-1.7.1.js'></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js"></script>
+	<script src="/static/js/ToDoJavaScript.js"></script>
 </head>
 
 <header> 
@@ -19,46 +19,57 @@
 <body>
 	<center><form name = "taskGrab" method = "POST">
 		<div align = "center">
-			<select name = "dropDownMenu">
-				<option value = "Select a Task"> Select an Employee </option>
+			<select name = "dropDownMenu" id="updateTaskSelect">
+				<option value = "Select a Task"> Select a Task </option>
 			</select>
 		</div>
 		<div class = "textBoxes">
 		<ul>
 			<li>
+				<label> ID Number </label><br>
+  				<span id="updateIdNum"></span>
+  				<br>
+  			</li>
+			<li>
 				<label> Assigned Person </label><br>
-  				<input type="text" name="firstName">
+  				<input type="text" name="firstName" id="updateName">
   				<span> Enter their first name. </span>
   				<br>
   			</li>
 			<li>
 				<label> Task </label><br>
-				<input type="text" name="task">
+				<input type="text" name="task" id="updateTask">
 				<span> Enter the task. </span>
 				<br>
 			</li>
 			<li>
 				<label> Complete by Date </label><br>
-				<input type="text" name="completeDate">
+				<input type="text" name="completeDate" id="updateDate">
 				<span> When does the task need to be finished? </span>
 				<br>
 			</li>
 			<li>
 				<label> Description? </label><br>
-				<input type="text" name="description">
+				<input type="text" name="description" id="updateDescription">
 				<span> Description of the task. </span>
 				<br>
 			</li>
 			<li>
 				<label> In Progress? </label><br>
-				<input type="text" name="inProgress">
+				<input type="text" name="inProgress" id="updateInProgress">
 				<span> Is this task currently being worked on? </span>
+				<br>
+			</li>
+			<li>
+				<label> Complete? </label><br>
+				<input type="text" name="complete" id="updateComplete">
+				<span> Is this task complete? </span>
 				<br>
 			</li>
 		</ul>
 		</div>
 		<div>
-			<button class = "UpdateBtn" type = "submit"> Update! </button>
+			<button class = "UpdateBtn" type = "submit" id="updateSubmit"> Update! </button>
 		</div>
 	</form></center>
 </body>
