@@ -188,7 +188,7 @@ $(document).ready(function(){
 				valid = false;
 				$("#updateTaskError").html("Task name is required.");
 			}
-			if($.trim(name) === '')
+			if($.trim(user) === '')
 			{
 				valid = false;
 				$("#updateNameError").html("Assigned person is required.");

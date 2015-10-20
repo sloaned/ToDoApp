@@ -68,6 +68,26 @@ $(document).ready(function(){
 						}
 					}
 					break;
+				case("Past Due"):
+					var today = new Date();
+					for(var i = 0; i < obj.length; i++){
+						item = obj[i];
+						var date = item.dueDate;
+						var month = date.substring(0, 2);
+						var day = date.substring(3, 5);
+						var year = date.substring(6, 10);
+						month = parseInt(month);
+						day = parseInt(day);
+						year = parseInt(year);
+						month--;
+						var taskDate = new Date();
+						taskDate.setFullYear(year, month, day);
+						if(taskDate < today && item.complete === false)
+						{
+							filtered.push(item);
+						}
+					}
+					break;
 				default:
 					break;
 			}
