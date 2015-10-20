@@ -29,62 +29,72 @@ $(document).ready(function(){
 	$("#addSubmit").click(function(event){
 		event.preventDefault();
 		var date = $("#addDate").val();
-		var task = $("#addTask").val();
+		var taskname = $("#addTask").val();
 		var user = $("#addName").val();
-		var unique = true;
 		$.ajax({
 			url: '/todo',
 			method: 'GET'
 		}).then(function(toDoList){
 			var obj = JSON.parse(JSON.stringify(toDoList));
 			var item;
+			var unique = true;
+
 			for(var i = 0; i < obj.length; i++){
 				item = obj[i];
-				if(item.task === task)
+				if(item.task === taskname)
 				{
 					unique = false;
+					console.log("That task has been entered already.");
 					break;
 				}
 			}
+			if(unique)
+			{
+				if( $.trim(taskname) === '')
+				{
+					console.log("Task name cannot be empty.");
+				}
+				else if($.trim(user) === '')
+				{
+					console.log("User name cannot be empty.");
+				}
+				else if(!isValidDate(date))
+				{
+					console.log("Invalid date.");
+				}
+				else
+				{
+					var item = {};
+					item.task = $("#addTask").val();
+					item.assignedUser = $("#addName").val();
+					item.dueDate = $("#addDate").val();
+					item.description = $("#addDescription").val();
+					item.complete = false;
+					if($("#addInProgress").is(':checked'))
+					{
+						item.inProgress = true;
+					}
+					else
+					{
+						item.inProgress = false;
+					}
+					$.ajax({
+						url: '/todo',
+						method: 'POST',
+						contentType: 'application/json',
+						data: JSON.stringify(item)
+					}).then(function(){
+						window.location.href = "/todo/index";
+					},
+					function(error){
+						console.log(JSON.stringify(error));
+					});
+				}
+				
+			}
+			
 		});
-		if( $.trim(task) === '')
-		{
-			console.log("Task name cannot be empty.");
-		}
-		else if($.trim(name) === '')
-		{
-			console.log("User name cannot be empty.");
-		}
-		else if(!unique)
-		{
-			console.log("That task has been entered already.");
-		}	
-		else if(!isValidDate(date))
-		{
-			console.log("Invalid date.");
-		}
-		else
-		{
-			var item = {};
-			item.task = $("#addTask").val();
-			item.assignedUser = $("#addName").val();
-			item.inProgress = $("#addInProgress").val();
-			item.dueDate = $("#addDate").val();
-			item.description = $("#addDescription").val();
-			item.complete = false;
-			$.ajax({
-				url: '/todo',
-				method: 'POST',
-				contentType: 'application/json',
-				data: JSON.stringify(item)
-			}).then(function(){
-				window.location.href = "/todo/index";
-			},
-			function(error){
-				console.log(JSON.stringify(error));
-			});
-		}
-		
+
 	
 	});
 	
@@ -120,8 +130,7 @@ $(document).ready(function(){
 					$("#updateTask").val(item.task);
 					$("#updateDate").val(item.dueDate);
 					$("#updateDescription").val(item.description);
-					//$("#updateInProgress").val(item.inProgress);
-					//$("#updateComplete").val(item.complete);
+
 					if(item.inProgress === true)
 					{
 						$("#updateInProgress").prop('checked', true);
@@ -147,74 +156,76 @@ $(document).ready(function(){
 		var date = $("#updateDate").val();
 		var task = $("#updateTask").val();
 		var user = $("#updateName").val();
-		var unique = true;
+		
 		$.ajax({
 			url: '/todo',
 			method: 'GET'
 		}).then(function(toDoList){
 			var obj = JSON.parse(JSON.stringify(toDoList));
 			var item;
+			var unique = true;
 			for(var i = 0; i < obj.length; i++){
 				item = obj[i];
 				if(item.task === task)
 				{
 					unique = false;
+					console.log("That task has been entered already.");
 					break;
 				}
 			}
+			if(unique)
+			{
+				if( $.trim(task) === '')
+				{
+					console.log("Task name cannot be empty.");
+				}
+				else if($.trim(name) === '')
+				{
+					console.log("Assigned user cannot be empty.");
+				}
+				else if(!isValidDate(date))
+				{
+					console.log("Invalid date.");
+				}
+				else
+				{
+					var idNum = $("#updateIdNum").html();
+					var item = {};
+					item.task = $("#updateTask").val();
+					item.assignedUser = $("#updateName").val();
+					item.dueDate = $("#updateDate").val();
+					item.description = $("#updateDescription").val();
+					if($("#updateInProgress").is(':checked'))
+					{
+						item.inProgress = true;
+					}
+					else
+					{
+						item.inProgress = false;
+					}
+					if($("#updateComplete").is(':checked'))
+					{
+						item.complete = true;
+					}
+					else
+					{
+						item.complete = false;
+					}
+					$.ajax({
+						url: '/todo/'+idNum,
+						method: 'PUT',
+						contentType: 'application/json',
+						data: JSON.stringify(item)
+					}).then(function(){
+						window.location.href = "/todo/index";
+					},
+					function(error){
+						console.log(JSON.stringify(error));
+					});
+				}
+			}
 		});
-		if( $.trim(task) === '')
-		{
-			console.log("Task name cannot be empty.");
-		}
-		else if($.trim(name) === '')
-		{
-			console.log("Assigned user cannot be empty.");
-		}
-		else if(!unique)
-		{
-			console.log("That task has been entered already.");
-		}	
-		else if(!isValidDate(date))
-		{
-			console.log("Invalid date.");
-		}
-		else
-		{
-			var idNum = $("#updateIdNum").html();
-			var item = {};
-			item.task = $("#updateTask").val();
-			item.assignedUser = $("#updateName").val();
-			item.dueDate = $("#updateDate").val();
-			item.description = $("#updateDescription").val();
-			if($("#updateInProgress").is(':checked'))
-			{
-				item.inProgress = true;
-			}
-			else
-			{
-				item.inProgress = false;
-			}
-			if($("#updateComplete").is(':checked'))
-			{
-				item.complete = true;
-			}
-			else
-			{
-				item.complete = false;
-			}
-			$.ajax({
-				url: '/todo/'+idNum,
-				method: 'PUT',
-				contentType: 'application/json',
-				data: JSON.stringify(item)
-			}).then(function(){
-				window.location.href = "/todo/index";
-			},
-			function(error){
-				console.log(JSON.stringify(error));
-			});
-		}
+		
 		
 	
 	});
