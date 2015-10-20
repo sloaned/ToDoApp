@@ -4,8 +4,8 @@ $(document).ready(function(){
 		url: '/todo',
 		method: 'GET'
 	}).then(function(toDoList){
-		//var obj = JSON.parse(JSON.stringify(toDoList));
-		var obj = toDoList;
+		var obj = JSON.parse(JSON.stringify(toDoList));
+		//var obj = toDoList;
 		var item;
 		console.log(toDoList);
 		for(var i = 0; i < obj.length; i++){

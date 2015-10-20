@@ -61,7 +61,6 @@ public class ToDoServiceImpl implements ToDoService {
 
 	@Override
 	public void remove(int index) {
-		index -= 1;
 		toDoData.removeFromToDoList(index);	
 	}
 
@@ -109,7 +108,6 @@ public class ToDoServiceImpl implements ToDoService {
 
 	@Override
 	public void update(int choice, String task, boolean complete, boolean inProgress, String assignedUser, Date dueDate, String description) {
-		choice--;
 		ToDoItem item = new ToDoItem(task, complete, inProgress, assignedUser, dueDate, description);
 		toDoData.updateToDoList(choice, item);
 		

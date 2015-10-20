@@ -30,7 +30,14 @@ public class ToDoArrayList implements ToDoData{
 
 	@Override
 	public void removeFromToDoList(int index) {
-		toDoList.remove(index);
+		for(int i = 0; i < toDoList.size(); i++)
+		{
+			if((toDoList.get(i)).getTaskNum() == index)
+			{
+				toDoList.remove(i);
+				break;
+			}
+		}
 	}
 	
 	public void markCompleteAt(int index){
@@ -70,7 +77,15 @@ public class ToDoArrayList implements ToDoData{
 
 	@Override
 	public void updateToDoList(int index, ToDoItem item) {
-		toDoList.set(index, item);	
+		item.setTaskNum(index);
+		for(int i = 0; i < toDoList.size(); i++)
+		{
+			if((toDoList.get(i).getTaskNum() == index))
+			{
+				toDoList.set(i, item);	
+			}
+		}
+		
 	}
 	
 	public ArrayList<ToDoItem> getPastDue(){
