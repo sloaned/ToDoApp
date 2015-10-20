@@ -151,6 +151,7 @@ $(document).ready(function(){
 			}
 		});
 	});
+	
 	$("#updateSubmit").click(function(event){
 		event.preventDefault();
 		var date = $("#updateDate").val();

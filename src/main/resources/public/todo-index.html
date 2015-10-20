@@ -18,8 +18,16 @@
 </header>
 
 <body>
+	<select id="filterSelect">
+		<option>All statuses</option>
+		<option>Incomplete</option>
+		<option>Complete</option>
+		<option>In Progress</option>
+		<option>Not In Progress</option>
+	</select>
+	<button id="filterButton">Filter</button>
 	<div class="datagrid">
-	<table id="toDoTable">
+	<table>
 		<thead>
 			<tr>
 				<th> Item Number </th>
@@ -31,7 +39,9 @@
 				<th> Finished </th>
 			</tr>
 		</thead>
-			
+		<tbody id="toDoTable">
+		
+		</tbody>	
 		</table>
 	</div>
 </body>
