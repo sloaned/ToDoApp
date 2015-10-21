@@ -182,7 +182,7 @@ $(document).ready(function(){
 		var date = $("#updateDate").val();
 		var task = $("#updateTask").val();
 		var user = $("#updateName").val();
-		
+		var taskNumber = $("#updateIdNum").html();
 		$.ajax({
 			url: '/todo',
 			method: 'GET'
@@ -190,9 +190,11 @@ $(document).ready(function(){
 			var obj = JSON.parse(JSON.stringify(toDoList));
 			var item;
 			var valid = true;
-			for(var i = 0; i < obj.length; i++){
+			for(var i = 0; i < obj.length; i++)
+			{
 				item = obj[i];
-				if(item.task === task)
+				console.log(item.taskNum + ' ' + taskNumber);
+				if(item.task === task && item.taskNum != taskNumber)
 				{
 					valid = false;
 					$("#updateTaskError").html("That task has been entered already.");
