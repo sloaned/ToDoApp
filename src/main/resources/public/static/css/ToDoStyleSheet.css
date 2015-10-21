@@ -121,9 +121,13 @@ a
 .datagrid table tbody tr:last-child td { 
 	border-bottom: none; 
 }
+.filterSelect{
+	margin: 15px;
+}
 
-/* TO DO REMOVE */
-.removeBtn, .updateBtn, .createBtn{
+
+/* BUTTON */
+.removeBtn, .updateBtn, .createBtn, .filterBtn{
 	position:relative;
 	text-align: center;
 	background: #670EB5;
@@ -231,4 +235,39 @@ form{
 .textBoxes input[type="button"]:hover{
     background: #670EB5;
     color:#EBD6FF;
+}
+
+/* CHECKBOXES */
+.checkbox {
+  width: 28px;
+  height: 28px;
+  position: relative;
+  margin: 20px auto;
+  background: #fcfff4;
+  background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+  box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+}
+
+	&checkbox::after {
+      content: '';
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      background: $activeColor;
+      background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);
+      box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+      opacity: 0;
+    }
+    &:hover::after {
+      opacity: 0.3;
+    }
+  }
+  input[type=checkbox] {
+    visibility: hidden;
+    &:checked + label:after {
+      opacity: 1;
+    }   
+  } 
 }
