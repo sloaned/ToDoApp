@@ -6,25 +6,26 @@
 	<title> Remove a Task </title>
 	<link rel="stylesheet" type= "text/css" href="/static/css/ToDoStyleSheet.css" media="screen" />
 	<link href="http://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet" />
-	<script src="/static/js/ToDoJavaScript.js"></script>
 	<script type='text/javascript' src='//code.jquery.com/jquery-1.7.1.js'></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js"></script>
+	<script src="/static/js/ToDoJavaScript.js"></script>
 </head>
 
 <header> 
+	<span id="topMenu"><a href="/todo/index">View To-Do List</a><a href="/todo/create">Add task</a><a href="/todo/update">Update task</a><a href="/todo/remove">Remove task</a></span>
 	<h1> Remove a Task </h1> 
 </header>
 
 <body>
 	<center><form name = "toDoDelete" method = "POST">
 		<div>
-			<select name = "dropDownMenu">
+			<select name = "dropDownMenu" id="removeTaskSelect">
 				<option value = "Select a task"> Select a Task </option>
 			</select>
 		</div>
 		<div>
-			<button class = "removeBtn" type = "submit"> Remove! </button>
+			<button class = "removeBtn" type = "submit" id="removeSubmit"> Remove! </button>
 		</div>	
 	</form></center>
 </body>

@@ -1,5 +1,7 @@
 package catalyst.applicationRunner.services.impl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -26,10 +28,30 @@ public class ToDoServiceImpl implements ToDoService {
 	}
 	
 	
-	//public void add(String task, boolean inProgress, String assignedUser, Date dueDate, String description){
-	public void add(ToDoItem item){
-		//ToDoItem item = new ToDoItem(task, false, inProgress, assignedUser, dueDate, description);
+	public void add(String task, boolean inProgress, String assignedUser, Date dueDate, String description){
+		ToDoItem item = new ToDoItem(task, false, inProgress, assignedUser, dueDate, description);
 		toDoData.addToToDoList(item);
+	}
+	
+	/**
+	 * checks whether user input is a valid date
+	 * @param input
+	 * @return true if user input is valid date, false otherwise
+	 */
+	public boolean isDate(String input)
+	{
+		Date newDate = new Date ();
+		String pattern = "MM/dd/yyyy";
+	    SimpleDateFormat format = new SimpleDateFormat(pattern);
+		 try 
+		 {
+		      newDate = format.parse(input);
+		      return true;
+		 } 
+		 catch (ParseException e) 
+		 {
+		      return false;
+		 }
 	}
 	
 	public ArrayList<ToDoItem> getAll()
@@ -39,7 +61,6 @@ public class ToDoServiceImpl implements ToDoService {
 
 	@Override
 	public void remove(int index) {
-		index -= 1;
 		toDoData.removeFromToDoList(index);	
 	}
 
@@ -87,7 +108,6 @@ public class ToDoServiceImpl implements ToDoService {
 
 	@Override
 	public void update(int choice, String task, boolean complete, boolean inProgress, String assignedUser, Date dueDate, String description) {
-		choice--;
 		ToDoItem item = new ToDoItem(task, complete, inProgress, assignedUser, dueDate, description);
 		toDoData.updateToDoList(choice, item);
 		
