@@ -30,7 +30,7 @@ public class ToDoItem {
 	private boolean inProgress;
 	@Basic(optional=false)
 	private String assignedUser;
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "MM/dd/yyyy", timezone="PST")
+	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
 	@Basic(optional=false)
 	private Date dueDate;
 	private String description;
