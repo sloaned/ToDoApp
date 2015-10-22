@@ -14,7 +14,7 @@ $(document).ready(function(){
 	    var year = parseInt(parts[2], 10);
 
 	    // Check the ranges of month
-	    if(month == 0 || month > 12)
+	    if(month < 1 || month > 12)
 	        return false;
 
 	    var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];

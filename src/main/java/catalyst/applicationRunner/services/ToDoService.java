@@ -36,25 +36,25 @@ import catalyst.applicationRunner.entities.ToDoItem;
 		 * marks the task complete at the specified index and sets inProgress to false
 		 * @param index
 		 */
-		void markComplete(int index);
+		//void markComplete(int index);
 		
 		/**
 		 * marks the task incomplete at the specified index
 		 * @param index
 		 */
-		void markIncomplete(int index);
+		//void markIncomplete(int index);
 		
 		/**
 		 * returns an ArrayList of all to-do items that have been completed
 		 * @return ArrayList of ToDoItem 
 		 */
-		ArrayList<ToDoItem> getComplete();
+		//ArrayList<ToDoItem> getComplete();
 		
 		/**
 		 * returns an ArrayList of all to-do items that have not been completed
 		 * @return ArrayList of ToDoItem 
 		 */
-		ArrayList<ToDoItem> getIncomplete();
+		//ArrayList<ToDoItem> getIncomplete();
 
 		/**
 		 * replaces the task at the specified index in the ArrayList with an updated version
@@ -71,19 +71,19 @@ import catalyst.applicationRunner.entities.ToDoItem;
 		 * returns an ArrayList of all to-do items that are past their due date and incomplete
 		 * @return ArrayList of ToDoItem
 		 */
-		ArrayList<ToDoItem> getPastDue();
+		//ArrayList<ToDoItem> getPastDue();
 		
 		/**
 		 * returns an ArrayList of all to-do items that are assigned to the given user
 		 * @return ArrayList of ToDoItem
 		 */
-		ArrayList<ToDoItem> getUserTask(String userName);
+		//ArrayList<ToDoItem> getUserTask(String userName);
 
 		/**
 		 * returns an ArrayList of all to-do items that are in progress
 		 * @return ArrayList of ToDoItem
 		 */
-		ArrayList<ToDoItem> getInProgress();
+		//ArrayList<ToDoItem> getInProgress();
 		
 		/**
 		 * checks whether a given task name is in the to-do list already

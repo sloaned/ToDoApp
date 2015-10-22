@@ -3,14 +3,16 @@ package catalyst.applicationRunner.services.impl;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import catalyst.applicationRunner.daos.ToDoData;
-import catalyst.applicationRunner.daos.impl.ToDoArrayList;
+import catalyst.applicationRunner.daos.impl.ToDoHibernate;
 import catalyst.applicationRunner.entities.ToDoItem;
 import catalyst.applicationRunner.services.ToDoService;
 
@@ -20,7 +22,7 @@ public class ToDoServiceImpl implements ToDoService {
 	// Dependency to ToDoData
 	@Autowired
 	private ToDoData toDoData;
-	ToDoArrayList toDoArrayList = new ToDoArrayList();
+	ToDoHibernate toDoHibernate = new ToDoHibernate();
 	
 	public void setToDoData(ToDoData toDoData) 
 	{
@@ -28,7 +30,9 @@ public class ToDoServiceImpl implements ToDoService {
 	}
 	
 	
-	public void add(String task, boolean inProgress, String assignedUser, Date dueDate, String description){
+	public void add(String task, boolean inProgress, String assignedUser, Date dueDate, String description){		
+		System.out.println("date = " + dueDate);
+		
 		ToDoItem item = new ToDoItem(task, false, inProgress, assignedUser, dueDate, description);
 		toDoData.addToToDoList(item);
 	}
@@ -64,7 +68,7 @@ public class ToDoServiceImpl implements ToDoService {
 		toDoData.removeFromToDoList(index);	
 	}
 
-	@Override
+	/*@Override
 	public void markComplete(int index) {
 		index -= 1;
 		toDoData.markCompleteAt(index);
@@ -99,7 +103,7 @@ public class ToDoServiceImpl implements ToDoService {
 
 	public ArrayList<ToDoItem> getInProgress(){
 		return toDoData.getInProgress();
-	}
+	}*/
 	
 	public boolean inList(String task)
 	{

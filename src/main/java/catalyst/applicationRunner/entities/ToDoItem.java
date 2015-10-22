@@ -4,15 +4,34 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+@Entity
+@Table(name="todo")
 public class ToDoItem {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "taskId")
 	private int taskNum;
+	@Basic(optional=false)
 	private String task;
 	private boolean complete;
 	private boolean inProgress;
+	@Basic(optional=false)
 	private String assignedUser;
-	@JsonFormat(pattern = "MM/dd/yyyy")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "MM/dd/yyyy", timezone="PST")
+	@Basic(optional=false)
 	private Date dueDate;
 	private String description;
 	

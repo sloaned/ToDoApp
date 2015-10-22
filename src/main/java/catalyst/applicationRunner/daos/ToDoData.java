@@ -31,13 +31,13 @@ public interface ToDoData {
 	 * marks an item incomplete at the given index
 	 * @param index
 	 */
-	void markIncompleteAt(int index);
+//	void markIncompleteAt(int index);
 	
 	/**
 	 * marks an item complete at the given index
 	 * @param index
 	 */
-	void markCompleteAt(int index);
+	//void markCompleteAt(int index);
 	
 	/**
 	 * updates the list by replacing the toDoList item at the given index with updated item
@@ -50,31 +50,31 @@ public interface ToDoData {
 	 * gets the list of all completed to-do list items
 	 * @return ArrayList of ToDoItem
 	 */
-	ArrayList<ToDoItem> getCompleteList();
+	//ArrayList<ToDoItem> getCompleteList();
 	
 	/**
 	 * gets the list of all incomplete to-do list items
 	 * @return ArrayList of ToDoItem
 	 */
-	ArrayList<ToDoItem> getIncompleteList();
+	//ArrayList<ToDoItem> getIncompleteList();
 	
 	/**
 	 * returns an ArrayList of all to-do items that are past their due date and incomplete
 	 * @return ArrayList of ToDoItem
 	 */
-	ArrayList<ToDoItem> getPastDue();
+	//ArrayList<ToDoItem> getPastDue();
 
 	/**
 	 * returns an ArrayList of all to-do items that are assigned to the given user
 	 * @return ArrayList of ToDoItem
 	 */
-	ArrayList<ToDoItem> getUserTask(String userName);
+	//ArrayList<ToDoItem> getUserTask(String userName);
 	
 	/**
 	 * returns an ArrayList of all to-do items that are in progress
 	 * @return ArrayList of ToDoItem
 	 */
-	ArrayList<ToDoItem> getInProgress();
+	//ArrayList<ToDoItem> getInProgress();
 	
 	/**
 	 * checks whether a given task name is in the to-do list already
@@ -90,4 +90,6 @@ public interface ToDoData {
 	 * @return int line number
 	 */
 	int getLineNumber(String taskName);
+
+	ToDoItem getByTaskId(int taskId);
 }

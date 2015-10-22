@@ -2,45 +2,62 @@ package catalyst.applicationRunner.daos.impl;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.TimeZone;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
+
 
 import catalyst.applicationRunner.daos.ToDoData;
 import catalyst.applicationRunner.entities.ToDoItem;
 
 
 @Component
-public class ToDoArrayList implements ToDoData{
+@Transactional
+public class ToDoHibernate implements ToDoData{
 	
-	private int counter = 0;
-	ArrayList<ToDoItem> toDoList = new ArrayList<ToDoItem>();
+	@PersistenceContext
+	private EntityManager em;
+	
+	public void setEm(EntityManager em){
+		this.em = em;
+	}
+	
+	
+	//private int counter = 0;
+	//ArrayList<ToDoItem> toDoList = new ArrayList<ToDoItem>();
 	@Override
 	public ArrayList<ToDoItem> getToDoList() {
 		
-		return toDoList;
+		return (ArrayList<ToDoItem>) em.
+				createQuery("SELECT e FROM ToDoItem e", ToDoItem.class).
+				getResultList();
+	}
+	
+	@Override
+	public ToDoItem getByTaskId(int taskId) {
+		return em
+				.createQuery("SELECT e FROM ToDoItem e WHERE e.taskNum = :id", ToDoItem.class)
+				.setParameter("id",  taskId)
+				.getSingleResult();
 	}
 
 	@Override
 	public void addToToDoList(ToDoItem item) {
-		counter++;
-		item.setTaskNum(counter);
-		toDoList.add(item);	
+		em.persist(item);
 	}
 
 	@Override
 	public void removeFromToDoList(int index) {
-		for(int i = 0; i < toDoList.size(); i++)
-		{
-			if((toDoList.get(i)).getTaskNum() == index)
-			{
-				toDoList.remove(i);
-				break;
-			}
-		}
+		ToDoItem item = getByTaskId(index);
+		em.remove(item);
 	}
 	
-	public void markCompleteAt(int index){
+	/*public void markCompleteAt(int index){
 		toDoList.get(index).setComplete(true);
 		toDoList.get(index).setInProgress(false);
 	}
@@ -73,22 +90,16 @@ public class ToDoArrayList implements ToDoData{
 			}
 		}
 		return incomplete;
-	}
+	}*/
 
 	@Override
 	public void updateToDoList(int index, ToDoItem item) {
 		item.setTaskNum(index);
-		for(int i = 0; i < toDoList.size(); i++)
-		{
-			if((toDoList.get(i).getTaskNum() == index))
-			{
-				toDoList.set(i, item);	
-			}
-		}
+		em.merge(item);
 		
 	}
 	
-	public ArrayList<ToDoItem> getPastDue(){
+	/*public ArrayList<ToDoItem> getPastDue(){
 		ArrayList<ToDoItem> pastDue = new ArrayList<ToDoItem>();
 		Date date = new Date();
 		for(ToDoItem i : toDoList)
@@ -123,10 +134,12 @@ public class ToDoArrayList implements ToDoData{
 			}
 		}
 		return inProgressList;
-	}
+	}*/
 	
 	public boolean inList(String taskName)
 	{
+		
+		ArrayList<ToDoItem> toDoList = getToDoList();
 		for(ToDoItem i: toDoList)
 		{
 			if((i.getTask()).equals(taskName))
@@ -141,6 +154,7 @@ public class ToDoArrayList implements ToDoData{
 	{
 		int lineNumber = 0;
 		boolean found = false;
+		ArrayList<ToDoItem> toDoList = getToDoList();
 		for(int i = 0; i < toDoList.size() && !found; i++)
 		{
 			if((toDoList.get(i).getTask().equals(taskName)))
