@@ -2,16 +2,11 @@ package catalyst.applicationRunner.daos.impl;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.TimeZone;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
-
-
 import catalyst.applicationRunner.daos.ToDoData;
 import catalyst.applicationRunner.entities.ToDoItem;
 
@@ -34,8 +29,17 @@ public class ToDoHibernate implements ToDoData{
 	public ArrayList<ToDoItem> getToDoList() {
 		
 		return (ArrayList<ToDoItem>) em.
-				createQuery("SELECT e FROM ToDoItem e", ToDoItem.class).
+				createQuery("SELECT e FROM ToDoItem e ORDER BY e.taskNum", ToDoItem.class).
 				getResultList();
+	}
+	
+	@Override
+	public ArrayList<ToDoItem> getToDoList(String user) {
+		
+		return (ArrayList<ToDoItem>) em
+				.createQuery("SELECT e FROM ToDoItem e WHERE e.assignedUser = :name ORDER BY e.taskNum", ToDoItem.class)
+				.setParameter("name",  user)
+				.getResultList();
 	}
 	
 	@Override
@@ -64,33 +68,41 @@ public class ToDoHibernate implements ToDoData{
 	
 	public void markIncompleteAt(int index){
 		toDoList.get(index).setComplete(false);
-	}
-
-	@Override
-	public ArrayList<ToDoItem> getCompleteList() {
-		ArrayList<ToDoItem> complete = new ArrayList<ToDoItem>();
-		for(ToDoItem i : toDoList)
-		{
-			if(i.getComplete() == true)
-			{
-				complete.add(i);
-			}
-		}
-		return complete;
-	}
-
-	@Override
-	public ArrayList<ToDoItem> getIncompleteList() {
-		ArrayList<ToDoItem> incomplete = new ArrayList<ToDoItem>();
-		for(ToDoItem i : toDoList)
-		{
-			if(i.getComplete() == false)
-			{
-				incomplete.add(i);
-			}
-		}
-		return incomplete;
 	}*/
+
+	@Override
+	public ArrayList<ToDoItem> getCompleteList(String user) {
+		if((user.trim()).length() == 0)
+		{
+			return (ArrayList<ToDoItem>) em
+					.createQuery("SELECT e FROM ToDoItem e WHERE e.complete IS true ORDER BY e.taskNum", ToDoItem.class)
+					.getResultList();
+		}
+		else
+		{
+			return (ArrayList<ToDoItem>) em
+					.createQuery("SELECT e FROM ToDoItem e WHERE e.complete IS true AND e.assignedUser = :name ORDER BY e.taskNum", ToDoItem.class)
+					.setParameter("name",  user)
+					.getResultList();
+		}
+	}
+
+	@Override
+	public ArrayList<ToDoItem> getIncompleteList(String user) {
+		if((user.trim()).length() == 0)
+		{
+			return (ArrayList<ToDoItem>) em
+					.createQuery("SELECT e FROM ToDoItem e WHERE e.complete IS false ORDER BY e.taskNum", ToDoItem.class)
+					.getResultList();
+		}
+		else
+		{
+			return (ArrayList<ToDoItem>) em
+					.createQuery("SELECT e FROM ToDoItem e WHERE e.complete IS false AND e.assignedUser = :name ORDER BY e.taskNum", ToDoItem.class)
+					.setParameter("name",  user)
+					.getResultList();
+		}
+	}
 
 	@Override
 	public void updateToDoList(int index, ToDoItem item) {
@@ -99,19 +111,23 @@ public class ToDoHibernate implements ToDoData{
 		
 	}
 	
-	/*public ArrayList<ToDoItem> getPastDue(){
-		ArrayList<ToDoItem> pastDue = new ArrayList<ToDoItem>();
-		Date date = new Date();
-		for(ToDoItem i : toDoList)
-		{
-			if(i.getComplete() == false && i.getDueDate().before(date))
-			{
-				pastDue.add(i);
-			}
-		}
-		return pastDue;
-	}
 	@Override
+	public ArrayList<ToDoItem> getPastDue(String user){
+		if((user.trim()).length() == 0)
+		{
+			return (ArrayList<ToDoItem>) em
+					.createQuery("SELECT e FROM ToDoItem e WHERE e.dueDate < CURRENT_DATE() AND e.complete IS false ORDER BY e.taskNum", ToDoItem.class)
+					.getResultList();
+		}
+		else
+		{
+			return (ArrayList<ToDoItem>) em
+					.createQuery("SELECT e FROM ToDoItem e WHERE e.dueDate < CURRENT_DATE() AND e.complete IS false AND e.assignedUser = :name ORDER BY e.taskNum", ToDoItem.class)
+					.setParameter("name",  user)
+					.getResultList();
+		}
+	}
+	/*@Override
 	public ArrayList<ToDoItem> getUserTask(String userName) {
 		ArrayList<ToDoItem> user = new ArrayList<ToDoItem>();
 		for(ToDoItem i : toDoList)
@@ -122,19 +138,43 @@ public class ToDoHibernate implements ToDoData{
 			}
 		}
 		return user;
+	}*/
+	
+	@Override
+	public ArrayList<ToDoItem> getInProgress(String user){
+		System.out.println("made it to hibernate!!!");
+		if((user.trim()).length() == 0)
+		{
+			return (ArrayList<ToDoItem>) em
+					.createQuery("SELECT e FROM ToDoItem e WHERE e.inProgress IS true ORDER BY e.taskNum", ToDoItem.class)
+					.getResultList();
+		}
+		else
+		{
+			return (ArrayList<ToDoItem>) em
+					.createQuery("SELECT e FROM ToDoItem e WHERE e.inProgress IS true AND e.assignedUser = :name ORDER BY e.taskNum", ToDoItem.class)
+					.setParameter("name",  user)
+					.getResultList();
+		}
 	}
 	
-	public ArrayList<ToDoItem> getInProgress(){
-		ArrayList<ToDoItem> inProgressList = new ArrayList<ToDoItem>();
-		for(ToDoItem i: toDoList)
+	@Override
+	public ArrayList<ToDoItem> getNotInProgress(String user){
+		if((user.trim()).length() == 0)
 		{
-			if(i.getInProgress())
-			{
-				inProgressList.add(i);
-			}
+			return (ArrayList<ToDoItem>) em
+					.createQuery("SELECT e FROM ToDoItem e WHERE e.inProgress IS false ORDER BY e.taskNum", ToDoItem.class)
+					.getResultList();
 		}
-		return inProgressList;
-	}*/
+		else
+		{
+			return (ArrayList<ToDoItem>) em
+					.createQuery("SELECT e FROM ToDoItem e WHERE e.inProgress = false AND e.assignedUser = :name ORDER BY e.taskNum", ToDoItem.class)
+					.setParameter("name",  user)
+					.getResultList();
+		}
+		
+	}
 	
 	public boolean inList(String taskName)
 	{

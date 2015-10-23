@@ -105,6 +105,8 @@ $(document).ready(function(){
 	});
 	
 	$("#addInProgress").prop('checked', false);
+	$("#updateInProgress").prop('checked', false);
+	$("#updateComplete").prop('checked', false);
 	$.ajax({
 		url: '/todo',
 		method: 'GET'

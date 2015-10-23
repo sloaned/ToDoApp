@@ -14,6 +14,12 @@ public interface ToDoData {
 	ArrayList<ToDoItem> getToDoList();
 	
 	/**
+	 * returns the entire to-do list filtered by username
+	 * @return ArrayList<ToDoItem>
+	 */
+	ArrayList<ToDoItem> getToDoList(String name);
+	
+	/**
 	 * adds the specified item to the to-do list
 	 * @param ToDoItem object
 	 * @return void
@@ -50,19 +56,19 @@ public interface ToDoData {
 	 * gets the list of all completed to-do list items
 	 * @return ArrayList of ToDoItem
 	 */
-	//ArrayList<ToDoItem> getCompleteList();
+	ArrayList<ToDoItem> getCompleteList(String name);
 	
 	/**
 	 * gets the list of all incomplete to-do list items
 	 * @return ArrayList of ToDoItem
 	 */
-	//ArrayList<ToDoItem> getIncompleteList();
+	ArrayList<ToDoItem> getIncompleteList(String name);
 	
 	/**
 	 * returns an ArrayList of all to-do items that are past their due date and incomplete
 	 * @return ArrayList of ToDoItem
 	 */
-	//ArrayList<ToDoItem> getPastDue();
+	ArrayList<ToDoItem> getPastDue(String name);
 
 	/**
 	 * returns an ArrayList of all to-do items that are assigned to the given user
@@ -74,7 +80,13 @@ public interface ToDoData {
 	 * returns an ArrayList of all to-do items that are in progress
 	 * @return ArrayList of ToDoItem
 	 */
-	//ArrayList<ToDoItem> getInProgress();
+	ArrayList<ToDoItem> getInProgress(String name);
+	
+	/**
+	 * returns an ArrayList of all to-do items that are not in progress
+	 * @return ArrayList of ToDoItem
+	 */
+	ArrayList<ToDoItem> getNotInProgress(String name);
 	
 	/**
 	 * checks whether a given task name is in the to-do list already

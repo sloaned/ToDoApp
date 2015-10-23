@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import catalyst.applicationRunner.entities.ToDoItem;
@@ -34,6 +35,31 @@ public class ToDoWebServices {
 	public ArrayList<ToDoItem> getToDoList(){
 		return toDoService.getAll();
 	}	
+	
+	@RequestMapping(value="/todo", method = RequestMethod.GET, params = {"filter", "name"})
+	public ArrayList<ToDoItem> getFilteredList(@RequestParam String filter, @RequestParam String name){
+		if(filter.equals("All statuses") && name.equals(""))
+		{
+			return toDoService.getAll();
+		}
+		switch(filter)
+		{
+			case "All statuses":
+				return toDoService.getAll(name);
+			case "Incomplete":
+				return toDoService.getIncomplete(name);	
+			case "Complete":
+				return toDoService.getComplete(name);	
+			case "In Progress":
+				return toDoService.getInProgress(name);
+			case "Not In Progress":
+				return toDoService.getNotInProgress(name);
+			case "Past Due":
+				return toDoService.getPastDue(name);
+			default:
+				return null;		
+		}
+	}
 	
 
 	

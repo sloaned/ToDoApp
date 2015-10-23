@@ -58,9 +58,16 @@ public class ToDoServiceImpl implements ToDoService {
 		 }
 	}
 	
+	@Override
 	public ArrayList<ToDoItem> getAll()
 	{
 		return toDoData.getToDoList();
+	}
+	
+	@Override
+	public ArrayList<ToDoItem> getAll(String name)
+	{
+		return toDoData.getToDoList(name);
 	}
 
 	@Override
@@ -80,30 +87,34 @@ public class ToDoServiceImpl implements ToDoService {
 		index -= 1;
 		toDoData.markIncompleteAt(index);
 		
+	}*/
+
+	@Override
+	public ArrayList<ToDoItem> getComplete(String name) {
+		return toDoData.getCompleteList(name);
 	}
 
 	@Override
-	public ArrayList<ToDoItem> getComplete() {
-		return toDoData.getCompleteList();
-	}
-
-	@Override
-	public ArrayList<ToDoItem> getIncomplete() {
-		return toDoData.getIncompleteList();
+	public ArrayList<ToDoItem> getIncomplete(String name) {
+		return toDoData.getIncompleteList(name);
 	}
 	
-	public ArrayList<ToDoItem> getPastDue(){
-		return toDoData.getPastDue();
+	public ArrayList<ToDoItem> getPastDue(String name){
+		return toDoData.getPastDue(name);
 	}
 	
-	public ArrayList<ToDoItem> getUserTask(String userName)
+	/*public ArrayList<ToDoItem> getUserTask(String userName)
 	{
 		return toDoData.getUserTask(userName);
-	}
-
-	public ArrayList<ToDoItem> getInProgress(){
-		return toDoData.getInProgress();
 	}*/
+
+	public ArrayList<ToDoItem> getInProgress(String name){
+		return toDoData.getInProgress(name);
+	}
+	
+	public ArrayList<ToDoItem> getNotInProgress(String name){
+		return toDoData.getNotInProgress(name);
+	}
 	
 	public boolean inList(String task)
 	{
