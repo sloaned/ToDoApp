@@ -22,12 +22,8 @@ public class ToDoHibernate implements ToDoData{
 		this.em = em;
 	}
 	
-	
-	//private int counter = 0;
-	//ArrayList<ToDoItem> toDoList = new ArrayList<ToDoItem>();
 	@Override
-	public ArrayList<ToDoItem> getToDoList() {
-		
+	public ArrayList<ToDoItem> getToDoList() {	
 		return (ArrayList<ToDoItem>) em.
 				createQuery("SELECT e FROM ToDoItem e ORDER BY e.taskNum", ToDoItem.class).
 				getResultList();
@@ -35,7 +31,6 @@ public class ToDoHibernate implements ToDoData{
 	
 	@Override
 	public ArrayList<ToDoItem> getToDoList(String user) {
-		
 		return (ArrayList<ToDoItem>) em
 				.createQuery("SELECT e FROM ToDoItem e WHERE e.assignedUser = :name ORDER BY e.taskNum", ToDoItem.class)
 				.setParameter("name",  user)
@@ -60,15 +55,6 @@ public class ToDoHibernate implements ToDoData{
 		ToDoItem item = getByTaskId(index);
 		em.remove(item);
 	}
-	
-	/*public void markCompleteAt(int index){
-		toDoList.get(index).setComplete(true);
-		toDoList.get(index).setInProgress(false);
-	}
-	
-	public void markIncompleteAt(int index){
-		toDoList.get(index).setComplete(false);
-	}*/
 
 	@Override
 	public ArrayList<ToDoItem> getCompleteList(String user) {
@@ -127,22 +113,9 @@ public class ToDoHibernate implements ToDoData{
 					.getResultList();
 		}
 	}
-	/*@Override
-	public ArrayList<ToDoItem> getUserTask(String userName) {
-		ArrayList<ToDoItem> user = new ArrayList<ToDoItem>();
-		for(ToDoItem i : toDoList)
-		{
-			if(i.getAssignedUser().equals(userName))
-			{
-				user.add(i);
-			}
-		}
-		return user;
-	}*/
 	
 	@Override
 	public ArrayList<ToDoItem> getInProgress(String user){
-		System.out.println("made it to hibernate!!!");
 		if((user.trim()).length() == 0)
 		{
 			return (ArrayList<ToDoItem>) em

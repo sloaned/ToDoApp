@@ -49,28 +49,6 @@ public class ToDoItem {
 		this.description = description;
 	}
 	
-	/*public ToDoItem(String task, boolean complete, boolean inProgress, String assignedUser, String dueDate, String description){
-		Date newDate = new Date ();
-		String pattern = "MM/dd/yyyy";
-	    SimpleDateFormat format = new SimpleDateFormat(pattern);
-		 
-	    try 
-	    {
-	      newDate = format.parse(dueDate);
-	    } 
-	    catch (ParseException e) 
-	    {
-	      System.out.println("Error caught in ToDoServiceImpl while parsing date.");
-	      e.printStackTrace();
-	    }
-		this.task = task;
-		this.complete = complete;
-		this.inProgress = inProgress;
-		this.assignedUser = assignedUser;
-		this.dueDate = newDate;
-		this.description = description;
-	}*/
-	
 	public String getTask() {
 		return task;
 	}

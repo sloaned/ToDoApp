@@ -37,19 +37,7 @@ import catalyst.applicationRunner.entities.ToDoItem;
 		 * @return ArrayList of ToDoItem
 		 */
 		ArrayList<ToDoItem> getAll(String name); 
-		
-		/**
-		 * marks the task complete at the specified index and sets inProgress to false
-		 * @param index
-		 */
-		//void markComplete(int index);
-		
-		/**
-		 * marks the task incomplete at the specified index
-		 * @param index
-		 */
-		//void markIncomplete(int index);
-		
+
 		/**
 		 * returns an ArrayList of all to-do items that have been completed
 		 * @return ArrayList of ToDoItem 
@@ -78,12 +66,6 @@ import catalyst.applicationRunner.entities.ToDoItem;
 		 * @return ArrayList of ToDoItem
 		 */
 		ArrayList<ToDoItem> getPastDue(String name);
-		
-		/**
-		 * returns an ArrayList of all to-do items that are assigned to the given user
-		 * @return ArrayList of ToDoItem
-		 */
-		//ArrayList<ToDoItem> getUserTask(String userName);
 
 		/**
 		 * returns an ArrayList of all to-do items that are in progress

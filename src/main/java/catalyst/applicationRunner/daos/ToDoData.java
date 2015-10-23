@@ -34,18 +34,6 @@ public interface ToDoData {
 	void removeFromToDoList(int index);
 	
 	/**
-	 * marks an item incomplete at the given index
-	 * @param index
-	 */
-//	void markIncompleteAt(int index);
-	
-	/**
-	 * marks an item complete at the given index
-	 * @param index
-	 */
-	//void markCompleteAt(int index);
-	
-	/**
 	 * updates the list by replacing the toDoList item at the given index with updated item
 	 * @param index
 	 * @param item
@@ -70,12 +58,7 @@ public interface ToDoData {
 	 */
 	ArrayList<ToDoItem> getPastDue(String name);
 
-	/**
-	 * returns an ArrayList of all to-do items that are assigned to the given user
-	 * @return ArrayList of ToDoItem
-	 */
-	//ArrayList<ToDoItem> getUserTask(String userName);
-	
+
 	/**
 	 * returns an ArrayList of all to-do items that are in progress
 	 * @return ArrayList of ToDoItem

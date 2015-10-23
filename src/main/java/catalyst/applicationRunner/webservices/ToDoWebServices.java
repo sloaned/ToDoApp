@@ -61,13 +61,6 @@ public class ToDoWebServices {
 		}
 	}
 	
-
-	
-	/*@RequestMapping(value="/todo/{id}", method=RequestMethod.GET)
-	public ToDoService getTaskByID(@PathVariable Integer id) throws InvalidInputException{ 
-		return toDoService.getByItemId(id);
-	}*/
-	
 	@RequestMapping(value="/todo/{id}", method = RequestMethod.PUT)
 	public void updateToDoList(@PathVariable Integer id, @RequestBody ToDoItem item){
 		toDoService.update(id, item.getTask(), item.getComplete(), item.getInProgress(), item.getAssignedUser(), item.getDueDate(), item.getDescription());

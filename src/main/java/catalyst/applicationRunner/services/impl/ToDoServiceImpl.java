@@ -30,9 +30,7 @@ public class ToDoServiceImpl implements ToDoService {
 	}
 	
 	
-	public void add(String task, boolean inProgress, String assignedUser, Date dueDate, String description){		
-		//System.out.println("date = " + dueDate);
-		
+	public void add(String task, boolean inProgress, String assignedUser, Date dueDate, String description){				
 		ToDoItem item = new ToDoItem(task, false, inProgress, assignedUser, dueDate, description);
 		toDoData.addToToDoList(item);
 	}
@@ -75,20 +73,6 @@ public class ToDoServiceImpl implements ToDoService {
 		toDoData.removeFromToDoList(index);	
 	}
 
-	/*@Override
-	public void markComplete(int index) {
-		index -= 1;
-		toDoData.markCompleteAt(index);
-		
-	}
-
-	@Override
-	public void markIncomplete(int index) {
-		index -= 1;
-		toDoData.markIncompleteAt(index);
-		
-	}*/
-
 	@Override
 	public ArrayList<ToDoItem> getComplete(String name) {
 		return toDoData.getCompleteList(name);
@@ -102,11 +86,6 @@ public class ToDoServiceImpl implements ToDoService {
 	public ArrayList<ToDoItem> getPastDue(String name){
 		return toDoData.getPastDue(name);
 	}
-	
-	/*public ArrayList<ToDoItem> getUserTask(String userName)
-	{
-		return toDoData.getUserTask(userName);
-	}*/
 
 	public ArrayList<ToDoItem> getInProgress(String name){
 		return toDoData.getInProgress(name);
